@@ -1,0 +1,8 @@
+{
+  "id": 4,
+  "title": "New Test Todo",
+  "description": "This is a new todo created via API",
+  "completed": false,
+  "createdAt": "2024-01-15T14:30:00.000Z",
+  "updatedAt": "2024-01-15T14:30:00.000Z"
+} 
