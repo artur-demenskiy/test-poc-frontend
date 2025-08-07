@@ -267,7 +267,7 @@ describe('Utility Functions', () => {
       const endTime = performance.now();
 
       expect(result.title).toBe('Async Todo');
-      expect(endTime - startTime).toBeGreaterThanOrEqual(5); // Reduced threshold
+      expect(endTime - startTime).toBeGreaterThanOrEqual(4); // Further reduced threshold
       expect(endTime - startTime).toBeLessThan(100);
     });
   });

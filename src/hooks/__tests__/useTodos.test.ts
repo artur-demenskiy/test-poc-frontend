@@ -1,4 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
+import { act } from 'react';
 import { useTodos } from '../useTodos';
 import { TodoService } from '../../services/todoService';
 import { Todo, CreateTodoDto, UpdateTodoDto } from '../../types/todo';
@@ -48,7 +49,12 @@ describe('useTodos', () => {
       deleteTodo: jest.fn(),
     };
 
+    // Mock the constructor to return our mock instance
     mockTodoService.mockImplementation(() => mockInstance);
+    jest.clearAllMocks();
+  });
+
+  afterEach(() => {
     jest.clearAllMocks();
   });
 
@@ -127,15 +133,19 @@ describe('useTodos', () => {
     const existingTodo = createMockTodo();
     const updatedTodo = createMockTodo({ title: 'Updated Todo' });
     const updateData = createMockUpdateDto();
+    
+    // Mock createTodo to return the existing todo
+    mockInstance.createTodo.mockResolvedValue(existingTodo);
     mockInstance.updateTodo.mockResolvedValue(updatedTodo);
 
     const { result } = renderHook(() => useTodos());
 
-    // Set initial state
-    act(() => {
-      result.current.todos = [existingTodo];
+    // First add the todo to the list
+    await act(async () => {
+      await result.current.addTodo({ title: existingTodo.title, description: existingTodo.description });
     });
 
+    // Then update it
     await act(async () => {
       await result.current.updateTodo(1, updateData);
     });
@@ -147,15 +157,19 @@ describe('useTodos', () => {
 
   it('should delete todo', async () => {
     const todoToDelete = createMockTodo();
+    
+    // Mock createTodo to return the todo to delete
+    mockInstance.createTodo.mockResolvedValue(todoToDelete);
     mockInstance.deleteTodo.mockResolvedValue(todoToDelete);
 
     const { result } = renderHook(() => useTodos());
 
-    // Set initial state
-    act(() => {
-      result.current.todos = [todoToDelete];
+    // First add the todo to the list
+    await act(async () => {
+      await result.current.addTodo({ title: todoToDelete.title, description: todoToDelete.description });
     });
 
+    // Then delete it
     await act(async () => {
       await result.current.deleteTodo(1);
     });
@@ -220,7 +234,11 @@ describe('useTodos', () => {
     const { result } = renderHook(() => useTodos());
 
     await act(async () => {
-      await result.current.addTodo(createMockCreateDto());
+      try {
+        await result.current.addTodo(createMockCreateDto());
+      } catch (error) {
+        // Expected to throw
+      }
     });
 
     expect(result.current.error).toBe(errorMessage);
