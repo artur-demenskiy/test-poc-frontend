@@ -23,12 +23,12 @@ We have successfully set up a comprehensive automated testing framework for the 
 - **Features**: Isolated component testing with real browser environment
 
 ### 4. **Cross-Browser Tests**
-- **Framework**: Playwright
-- **Location**: `tests/`
-- **Features**: Chrome, Firefox, Safari, Mobile Chrome, Mobile Safari
+- **Framework**: Cypress
+- **Location**: `cypress/e2e/`
+- **Features**: Chrome, Firefox, Safari, Edge via browser flags
 
 ### 5. **Performance Tests**
-- **Framework**: Playwright
+- **Framework**: Cypress
 - **Features**: Load time testing, memory usage, Core Web Vitals
 
 ### 6. **Accessibility Tests**
@@ -48,10 +48,8 @@ We have successfully set up a comprehensive automated testing framework for the 
 │   ├── component/           # Component test specs
 │   ├── fixtures/            # Test data
 │   └── support/             # Custom commands
-├── tests/                   # Playwright tests
 ├── jest.config.js           # Jest configuration
-├── cypress.config.ts        # Cypress configuration
-└── playwright.config.ts     # Playwright configuration
+└── cypress.config.ts        # Cypress configuration
 ```
 
 ## 🚀 Available Scripts
@@ -67,7 +65,7 @@ npm run test:coverage      # Generate coverage report
 ```bash
 npm run cypress:open       # Open Cypress Test Runner
 npm run cypress:run        # Run Cypress tests headlessly
-npm run playwright:test    # Run Playwright tests
+npm run cypress:component  # Run component tests
 ```
 
 ### Specialized Tests

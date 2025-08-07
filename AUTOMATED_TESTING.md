@@ -23,9 +23,11 @@ Our testing approach follows the testing pyramid principle:
 1. **Unit Tests** - Individual component and function testing
 2. **Integration Tests** - Component interaction testing
 3. **E2E Tests** - Full application workflow testing
-4. **Performance Tests** - Load time and responsiveness testing
-5. **Accessibility Tests** - WCAG compliance testing
-6. **API Tests** - Backend integration testing
+4. **Component Tests** - Isolated component testing
+5. **Performance Tests** - Load time and responsiveness testing
+6. **Accessibility Tests** - WCAG compliance testing
+7. **API Tests** - Backend integration testing
+8. **Cross-browser Tests** - Browser compatibility testing
 
 ## Technology Stack
 
@@ -33,8 +35,7 @@ Our testing approach follows the testing pyramid principle:
 
 - **Jest** - Unit and integration testing
 - **React Testing Library** - Component testing utilities
-- **Cypress** - E2E and component testing
-- **Playwright** - Cross-browser testing
+- **Cypress** - E2E, component, and cross-browser testing
 - **TypeScript** - Type-safe testing
 
 ### Additional Tools
@@ -60,10 +61,8 @@ Our testing approach follows the testing pyramid principle:
 │   ├── component/           # Component test specifications
 │   ├── fixtures/            # Test data
 │   └── support/             # Custom commands and utilities
-├── tests/                   # Playwright test specifications
 ├── jest.config.js           # Jest configuration
-├── cypress.config.ts        # Cypress configuration
-└── playwright.config.ts     # Playwright configuration
+└── cypress.config.ts        # Cypress configuration
 ```
 
 ## Configuration Files
@@ -126,52 +125,7 @@ export default defineConfig({
 });
 ```
 
-### Playwright Configuration (`playwright.config.ts`)
 
-```typescript
-import { defineConfig, devices } from '@playwright/test';
-
-export default defineConfig({
-  testDir: './tests',
-  fullyParallel: true,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
-  use: {
-    baseURL: 'http://localhost:3000',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-  },
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    },
-  ],
-  webServer: {
-    command: 'npm run start',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-  },
-});
-```
 
 ## Test Scripts
 
@@ -187,17 +141,13 @@ export default defineConfig({
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "cypress:component": "cypress run --component",
-    "playwright:install": "playwright install",
-    "playwright:test": "playwright test",
-    "playwright:test:headed": "playwright test --headed",
-    "playwright:test:ui": "playwright test --ui",
-    "test:all": "npm run test:ci && npm run cypress:run && npm run playwright:test",
-    "test:e2e": "npm run cypress:run && npm run playwright:test",
+    "test:all": "npm run test:ci && npm run cypress:run",
+    "test:e2e": "npm run cypress:run",
     "test:unit": "npm run test:ci",
     "test:integration": "npm run cypress:run",
-    "test:performance": "npm run playwright:test -- --grep @performance",
+    "test:performance": "npm run cypress:run -- --spec 'cypress/e2e/performance.cy.ts'",
     "test:accessibility": "npm run cypress:run -- --spec 'cypress/e2e/accessibility.cy.ts'",
-    "test:mobile": "npm run playwright:test -- --project='Mobile Chrome' --project='Mobile Safari'",
+    "test:mobile": "npm run cypress:run --config viewportWidth=375,viewportHeight=667",
     "test:cross-browser": "npm run cypress:run:chrome && npm run cypress:run:firefox && npm run cypress:run:edge",
     "test:smoke": "npm run cypress:run -- --spec 'cypress/e2e/smoke.cy.ts'",
     "test:api": "npm run cypress:run -- --spec 'cypress/e2e/api.cy.ts'"
@@ -329,25 +279,24 @@ describe('TodoForm Component', () => {
 });
 ```
 
-### 4. Performance Tests (Playwright)
+### 4. Performance Tests (Cypress)
 
-**File:** `tests/performance.spec.ts`
+**File:** `cypress/e2e/performance.cy.ts`
 
 ```typescript
-import { test, expect } from '@playwright/test';
-
-test.describe('Performance Tests', () => {
-  test('should load initial page within 3 seconds', async ({ page }) => {
-    const startTime = Date.now();
-    await page.goto('/');
-    const loadTime = Date.now() - startTime;
-    
-    expect(loadTime).toBeLessThan(3000);
-    await expect(page.getByTestId('todo-form')).toBeVisible();
+describe('Performance Tests', () => {
+  beforeEach(() => {
+    cy.visit('/');
   });
 
-  test('should handle rapid todo creation without lag', async ({ page }) => {
-    const startTime = Date.now();
+  describe('Page Load Performance', () => {
+    it('should load initial page within 3 seconds', () => {
+      cy.measurePerformance();
+      cy.get('[data-testid=todo-form]', { timeout: 3000 }).should('be.visible');
+    });
+
+    it('should handle rapid todo creation without lag', () => {
+      const startTime = Date.now();
     
     for (let i = 0; i < 10; i++) {
       await page.getByTestId('todo-title-input').fill(`Todo ${i + 1}`);
