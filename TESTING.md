@@ -1,254 +1,458 @@
 # Testing Documentation
 
-This document describes the testing approach for the Todo React application, including best practices, test structure, and usage examples.
+This document describes the comprehensive testing approach for the Todo React application, including Cypress best practices, test structure, and usage examples.
 
 ## 📋 Table of Contents
 
 - [Testing Overview](#testing-overview)
+- [Cypress Best Practices](#cypress-best-practices)
 - [Test Structure](#test-structure)
-- [Best Practices](#best-practices)
 - [Test Types](#test-types)
-- [Test Examples](#test-examples)
 - [Running Tests](#running-tests)
 - [Code Coverage](#code-coverage)
+- [Advanced Patterns](#advanced-patterns)
 
 ## 🎯 Testing Overview
 
-Our application uses a comprehensive testing approach including:
+Our application uses a comprehensive testing approach with **Cypress** as the primary testing framework:
 
-- **Unit tests** - for individual functions and components
-- **Integration tests** - for interaction between components
-- **Accessibility tests** - for accessibility (ARIA attributes)
-- **Performance tests** - basic performance tests
+- **E2E Tests** - Full user workflows and critical paths
+- **Component Tests** - Isolated component testing with real browser environment
+- **API Tests** - Backend integration and error handling
+- **Accessibility Tests** - WCAG 2.1 AA compliance
+- **Performance Tests** - Load times and Core Web Vitals
+- **Unit Tests** - Individual functions and components (Jest + RTL)
 
 ### Technologies Used
 
-- **Jest** - testing framework
-- **React Testing Library** - for testing React components
-- **@testing-library/user-event** - for simulating user actions
-- **Axios Mock** - for mocking HTTP requests
+- **Cypress** - Primary testing framework for E2E and component testing
+- **Cypress Testing Library** - Accessibility-first testing utilities
+- **Jest** - Unit testing framework
+- **React Testing Library** - For testing React components
+- **@testing-library/user-event** - For simulating user actions
+
+## 🏆 Cypress Best Practices
+
+### 1. Test Isolation & Independence
+
+**✅ Best Practice: Independent Tests**
+```typescript
+describe('Todo App', () => {
+  beforeEach(() => {
+    // Reset state before each test
+    cy.task('db:seed')
+    cy.visit('/')
+  })
+
+  it('can add a new todo', () => {
+    // Complete workflow in single test
+    cy.get('[data-testid="new-todo"]').type('Learn Cypress{enter}')
+    cy.get('[data-testid="todo-list"] li').should('have.length', 1)
+    cy.get('[data-testid="todo-list"] li').first().should('contain', 'Learn Cypress')
+  })
+})
+```
+
+**❌ Anti-Pattern: Coupled Tests**
+```typescript
+// DON'T DO THIS - Tests depend on each other
+describe('Todo App', () => {
+  it('visits the app', () => {
+    cy.visit('/')
+  })
+
+  it('adds a todo', () => {
+    cy.get('[data-testid="new-todo"]').type('Learn Cypress{enter}')
+  })
+
+  it('verifies the todo', () => {
+    cy.get('[data-testid="todo-list"] li').should('contain', 'Learn Cypress')
+  })
+})
+```
+
+### 2. Element Selection Best Practices
+
+**✅ Use Data Attributes for Stable Selectors**
+```html
+<button
+  id="main"
+  class="btn btn-large"
+  name="submission"
+  role="button"
+  data-testid="submit-button"
+>
+  Submit
+</button>
+```
+
+**✅ Custom Commands for Consistent Selectors**
+```typescript
+// cypress/support/commands.ts
+Cypress.Commands.add('getByTestId', (selector, ...args) => {
+  return cy.get(`[data-testid=${selector}]`, ...args)
+})
+
+Cypress.Commands.add('getByTestIdLike', (selector, ...args) => {
+  return cy.get(`[data-testid*=${selector}]`, ...args)
+})
+```
+
+**✅ Accessibility-First Testing with Cypress Testing Library**
+```typescript
+// Install: npm install --save-dev @testing-library/cypress
+// Add to cypress/support/commands.ts: import '@testing-library/cypress/add-commands'
+
+// Use semantic selectors
+cy.findByRole('button', { name: 'Add Todo' }).click()
+cy.findByLabelText('Todo title').type('New Todo')
+cy.findByText('Submit').click()
+
+// Instead of brittle selectors
+cy.get('.btn-primary').click() // ❌ Avoid
+cy.get('#todo-input').type('New Todo') // ❌ Avoid
+```
+
+### 3. Multiple Assertions in Single Test
+
+**✅ Best Practice: Combine Related Assertions**
+```typescript
+it('validates and formats first name', () => {
+  cy.get('[data-testid="first-name"]')
+    .type('johnny')
+    .should('have.attr', 'data-validation', 'required')
+    .and('have.class', 'active')
+    .and('have.value', 'Johnny')
+})
+```
+
+**❌ Anti-Pattern: Tiny Tests with Single Assertions**
+```typescript
+// DON'T DO THIS - Inefficient for E2E testing
+describe('my form', () => {
+  beforeEach(() => {
+    cy.visit('/users/new')
+    cy.get('[data-testid="first-name"]').type('johnny')
+  })
+
+  it('has validation attr', () => {
+    cy.get('[data-testid="first-name"]').should('have.attr', 'data-validation', 'required')
+  })
+
+  it('has active class', () => {
+    cy.get('[data-testid="first-name"]').should('have.class', 'active')
+  })
+
+  it('has formatted first name', () => {
+    cy.get('[data-testid="first-name"]').should('have.value', 'Johnny')
+  })
+})
+```
+
+### 4. State Management Best Practices
+
+**✅ Use beforeEach for State Reset**
+```typescript
+// cypress/support/e2e.ts
+beforeEach(() => {
+  // Reset state before every test
+  cy.task('db:seed')
+})
+```
+
+**✅ Database Seeding with Cypress Tasks**
+```typescript
+// cypress.config.ts
+export default defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      on('task', {
+        async 'db:seed'() {
+          // Send request to backend API to re-seed database
+          const { data } = await axios.post(`${testDataApiEndpoint}/seed`)
+          return data
+        },
+      })
+    },
+  },
+})
+```
+
+**❌ Anti-Pattern: Using afterEach for Cleanup**
+```typescript
+// DON'T DO THIS - Unreliable cleanup
+describe('logged in user', () => {
+  beforeEach(() => {
+    cy.login()
+  })
+
+  afterEach(() => {
+    cy.logout() // ❌ This may not run if browser refreshes
+  })
+})
+```
+
+### 5. Network Request Handling
+
+**✅ Explicit Wait for Aliased Routes**
+```typescript
+cy.intercept('GET', '/users', [{ name: 'Maggy' }, { name: 'Joan' }]).as('getUsers')
+cy.get('[data-testid="fetch-users"]').click()
+cy.wait('@getUsers') // ✅ Wait explicitly for this route
+cy.get('table tr').should('have.length', 2)
+```
+
+**❌ Anti-Pattern: Unnecessary Waits**
+```typescript
+// DON'T DO THIS - Unnecessary explicit waits
+cy.intercept('GET', '/users', [{ name: 'Maggy' }, { name: 'Joan' }])
+cy.get('#fetch').click()
+cy.wait(4000) // ❌ Unnecessary wait
+cy.get('table tr').should('have.length', 2)
+```
+
+### 6. Command Aliasing Best Practices
+
+**✅ Use Aliases Instead of Variables**
+```typescript
+// ✅ CORRECT - Use aliases
+cy.get('a').as('links')
+cy.visit('https://example.cypress.io')
+cy.get('@links').first().click()
+```
+
+**❌ Anti-Pattern: Direct Variable Assignment**
+```typescript
+// ❌ DON'T DO THIS - Cypress commands are async
+const a = cy.get('a')
+cy.visit('https://example.cypress.io')
+a.first().click() // This will fail
+```
+
+### 7. Conditional Testing Patterns
+
+**✅ Recursive Pattern for Retries**
+```typescript
+const checkAndReload = () => {
+  cy.get('#result')
+    .should('not.be.empty')
+    .invoke('text')
+    .then(parseInt)
+    .then((number) => {
+      if (number === 7) {
+        cy.log('lucky **7**')
+        return
+      }
+      
+      cy.wait(500, { log: false })
+      cy.reload()
+      checkAndReload()
+    })
+}
+
+cy.visit('public/index.html')
+checkAndReload()
+```
+
+**✅ Synchronous DOM Testing**
+```typescript
+// Click button causing new elements to appear
+cy.get('button').click()
+cy.get('body')
+  .then(($body) => {
+    // Synchronously query from body
+    if ($body.find('input').length) {
+      return 'input'
+    }
+    return 'textarea'
+  })
+  .then((selector) => {
+    cy.get(selector).type(`found the element by selector ${selector}`)
+  })
+```
 
 ## 📁 Test Structure
 
 ```
-src/
-├── __tests__/                    # Integration tests
-│   ├── integration.test.tsx     # Component interaction tests
-│   └── utils.test.ts            # Utility and helper tests
-├── components/
-│   └── __tests__/               # Component tests
-│       ├── TodoForm.test.tsx
-│       ├── TodoItem.test.tsx
-│       └── TodoList.test.tsx
-├── hooks/
-│   └── __tests__/               # Hook tests
-│       └── useTodos.test.ts
-└── services/
-    └── __tests__/               # Service tests
-        └── todoService.test.ts
-```
-
-## 🏆 Best Practices
-
-### 1. Test Organization
-
-```typescript
-describe('ComponentName', () => {
-  // Setup
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  // Group tests by functionality
-  describe('rendering', () => {
-    // Rendering tests
-  });
-
-  describe('interactions', () => {
-    // User interaction tests
-  });
-
-  describe('edge cases', () => {
-    // Edge case tests
-  });
-});
-```
-
-### 2. Test Data Factories
-
-Use factories for creating test data:
-
-```typescript
-const createMockTodo = (overrides: Partial<Todo> = {}): Todo => ({
-  id: 1,
-  title: 'Test Todo',
-  description: 'Test Description',
-  completed: false,
-  createdAt: new Date('2024-01-15T10:30:00.000Z'),
-  updatedAt: new Date('2024-01-15T10:30:00.000Z'),
-  ...overrides,
-});
-```
-
-### 3. User-Centric Testing
-
-Test from the user's perspective:
-
-```typescript
-it('should allow user to add a new todo', async () => {
-  const user = userEvent.setup();
-  render(<TodoForm onSubmit={mockOnSubmit} />);
-
-  const titleInput = screen.getByLabelText(/title/i);
-  const submitButton = screen.getByRole('button', { name: /add todo/i });
-
-  await user.type(titleInput, 'New Todo');
-  await user.click(submitButton);
-
-  expect(mockOnSubmit).toHaveBeenCalledWith({
-    title: 'New Todo',
-    description: undefined,
-    completed: false
-  });
-});
-```
-
-### 4. Accessibility Testing
-
-Test component accessibility:
-
-```typescript
-it('should have proper ARIA labels', () => {
-  render(<TodoItem {...defaultProps} />);
-  
-  const checkbox = screen.getByRole('checkbox');
-  expect(checkbox).toHaveAttribute('aria-label', 'Mark "Test Todo" as complete');
-  
-  const editButton = screen.getByLabelText('Edit todo');
-  const deleteButton = screen.getByLabelText('Delete todo');
-  
-  expect(editButton).toBeInTheDocument();
-  expect(deleteButton).toBeInTheDocument();
-});
+cypress/
+├── e2e/                    # End-to-end tests
+│   ├── todo-app.cy.ts     # Main app workflows
+│   ├── smoke.cy.ts        # Critical functionality
+│   ├── api.cy.ts          # API integration tests
+│   ├── accessibility.cy.ts # Accessibility compliance
+│   └── performance.cy.ts  # Performance benchmarks
+├── component/             # Component tests
+│   └── TodoForm.cy.tsx    # Isolated component testing
+├── fixtures/              # Test data
+│   ├── todos.json         # Sample todo data
+│   ├── new-todo.json      # New todo payload
+│   └── updated-todo.json  # Updated todo payload
+└── support/               # Custom commands and utilities
+    ├── commands.ts        # Custom Cypress commands
+    ├── e2e.ts            # E2E support file
+    └── component.ts      # Component testing support
 ```
 
 ## 🧪 Test Types
 
-### Unit Tests
+### E2E Tests
 
-Test individual functions and methods:
-
+**Complete User Workflows**
 ```typescript
-describe('TodoService', () => {
-  it('should create todo successfully', async () => {
-    const newTodo = createMockTodo();
-    mockedAxios.post.mockResolvedValue({ data: newTodo });
+describe('Todo App E2E', () => {
+  beforeEach(() => {
+    cy.task('db:seed')
+    cy.visit('/')
+  })
 
-    const result = await todoService.createTodo(createData);
-
-    expect(mockedAxios.post).toHaveBeenCalledWith(baseURL, createData);
-    expect(result).toEqual(newTodo);
-  });
-});
+  it('can complete full todo workflow', () => {
+    // Add new todo
+    cy.findByRole('textbox', { name: /todo title/i }).type('Learn Cypress{enter}')
+    
+    // Verify todo was added
+    cy.findByText('Learn Cypress').should('be.visible')
+    
+    // Mark as complete
+    cy.findByRole('checkbox', { name: /mark learn cypress as complete/i }).click()
+    
+    // Verify completion
+    cy.findByText('Learn Cypress').should('have.class', 'completed')
+    
+    // Delete todo
+    cy.findByRole('button', { name: /delete learn cypress/i }).click()
+    
+    // Verify deletion
+    cy.findByText('Learn Cypress').should('not.exist')
+  })
+})
 ```
 
 ### Component Tests
 
-Test React components:
-
+**Isolated Component Testing**
 ```typescript
-describe('TodoForm', () => {
-  it('should submit form with valid data', async () => {
-    const user = userEvent.setup();
-    render(<TodoForm onSubmit={mockOnSubmit} />);
-
-    const titleInput = screen.getByLabelText(/title/i);
-    const submitButton = screen.getByRole('button', { name: /add todo/i });
-
-    await user.type(titleInput, 'New Todo');
-    await user.click(submitButton);
-
-    expect(mockOnSubmit).toHaveBeenCalledWith({
+describe('TodoForm Component', () => {
+  it('submits form with valid data', () => {
+    const onSubmitSpy = cy.spy().as('onSubmitSpy')
+    
+    cy.mount(<TodoForm onSubmit={onSubmitSpy} />)
+    
+    cy.findByRole('textbox', { name: /todo title/i }).type('New Todo')
+    cy.findByRole('button', { name: /add todo/i }).click()
+    
+    cy.get('@onSubmitSpy').should('have.been.calledWith', {
       title: 'New Todo',
-      description: undefined,
+      description: '',
       completed: false
-    });
-  });
-});
+    })
+  })
+})
 ```
 
-### Hook Tests
+### API Tests
 
-Test custom hooks:
-
+**Backend Integration Testing**
 ```typescript
-describe('useTodos', () => {
-  it('should load todos successfully', async () => {
-    mockTodoService.getAllTodos.mockResolvedValue(mockTodos);
-    
-    const { result } = renderHook(() => useTodos());
-    
-    await act(async () => {
-      await result.current.loadTodos();
-    });
-    
-    expect(result.current.todos).toEqual(mockTodos);
-  });
-});
+describe('Todo API', () => {
+  it('can create, read, update, and delete todos', () => {
+    // Create todo
+    cy.request('POST', '/api/todos', {
+      title: 'Test Todo',
+      description: 'Test Description'
+    }).then((response) => {
+      expect(response.status).to.equal(201)
+      const todoId = response.body.id
+      
+      // Read todo
+      cy.request('GET', `/api/todos/${todoId}`).then((response) => {
+        expect(response.status).to.equal(200)
+        expect(response.body.title).to.equal('Test Todo')
+      })
+      
+      // Update todo
+      cy.request('PUT', `/api/todos/${todoId}`, {
+        title: 'Updated Todo',
+        completed: true
+      }).then((response) => {
+        expect(response.status).to.equal(200)
+        expect(response.body.completed).to.be.true
+      })
+      
+      // Delete todo
+      cy.request('DELETE', `/api/todos/${todoId}`).then((response) => {
+        expect(response.status).to.equal(204)
+      })
+    })
+  })
+})
 ```
 
-### Integration Tests
+### Accessibility Tests
 
-Test interaction between components:
-
+**WCAG Compliance Testing**
 ```typescript
-describe('Todo App Integration', () => {
-  it('should handle complete user workflow', async () => {
-    const user = userEvent.setup();
-    render(<TodoList />);
+describe('Accessibility', () => {
+  beforeEach(() => {
+    cy.visit('/')
+    cy.injectAxe()
+  })
 
-    // Add new todo
-    const titleInput = screen.getByLabelText(/title/i);
-    const submitButton = screen.getByRole('button', { name: /add todo/i });
+  it('should not have any automatically detectable accessibility violations', () => {
+    cy.checkA11y()
+  })
 
-    await user.type(titleInput, 'New Todo');
-    await user.click(submitButton);
+  it('should have proper heading structure', () => {
+    cy.get('h1').should('exist')
+    cy.get('h1').should('contain', 'Todo App')
+  })
 
-    // Verify todo was added
-    expect(screen.getByText('New Todo')).toBeInTheDocument();
-  });
-});
+  it('should support keyboard navigation', () => {
+    cy.get('body').tab()
+    cy.focused().should('have.attr', 'data-testid', 'new-todo')
+    
+    cy.focused().type('Test Todo{enter}')
+    cy.tab()
+    cy.focused().should('have.attr', 'role', 'checkbox')
+  })
+})
 ```
 
 ### Performance Tests
 
-Basic performance tests:
-
+**Core Web Vitals Testing**
 ```typescript
-describe('performance', () => {
-  it('should handle large number of todos efficiently', () => {
-    const largeTodos = Array.from({ length: 1000 }, (_, i) => 
-      createMockTodo({ 
-        id: i + 1, 
-        title: `Todo ${i + 1}`,
-        description: `Description ${i + 1}`
-      })
-    );
+describe('Performance', () => {
+  it('should load within performance budget', () => {
+    cy.visit('/', {
+      onBeforeLoad: (win) => {
+        cy.spy(win.console, 'log').as('consoleLog')
+      }
+    })
 
-    mockUseTodos.mockReturnValue({
-      ...defaultMockReturn,
-      todos: largeTodos
-    });
+    // Measure page load time
+    cy.window().then((win) => {
+      const perfData = win.performance.getEntriesByType('navigation')[0]
+      expect(perfData.loadEventEnd - perfData.loadEventStart).to.be.lessThan(3000)
+    })
 
-    const startTime = performance.now();
-    render(<TodoList />);
-    const endTime = performance.now();
+    // Check for console errors
+    cy.get('@consoleLog').should('not.be.called')
+  })
 
-    expect(endTime - startTime).toBeLessThan(1000); // Should render in less than 1 second
-    expect(screen.getByText('Todo 1')).toBeInTheDocument();
-    expect(screen.getByText('Todo 1000')).toBeInTheDocument();
-  });
-});
+  it('should handle large datasets efficiently', () => {
+    // Load large dataset
+    cy.intercept('GET', '/api/todos', { fixture: 'large-todos.json' }).as('getLargeTodos')
+    cy.visit('/')
+    cy.wait('@getLargeTodos')
+
+    // Measure rendering performance
+    const startTime = performance.now()
+    cy.get('[data-testid="todo-list"] li').should('have.length', 1000)
+    const endTime = performance.now()
+
+    expect(endTime - startTime).to.be.lessThan(1000)
+  })
+})
 ```
 
 ## 🚀 Running Tests
@@ -256,159 +460,247 @@ describe('performance', () => {
 ### Basic Commands
 
 ```bash
-# All tests
-npm test
+# Open Cypress Test Runner
+npm run cypress:open
 
-# Tests in watch mode
-npm run test:watch
+# Run all E2E tests headlessly
+npm run cypress:run
 
-# Code coverage
-npm run test:coverage
+# Run component tests
+npm run cypress:component
 
-# Specific file
-npm test -- TodoItem.test.tsx
+# Run specific test file
+npm run cypress:run -- --spec "cypress/e2e/todo-app.cy.ts"
 
-# Specific test
-npm test -- --testNamePattern="should submit form"
+# Run tests in specific browser
+npm run cypress:run -- --browser chrome
+```
+
+### Advanced Commands
+
+```bash
+# Run tests with custom configuration
+npm run cypress:run -- --config baseUrl=http://localhost:3000
+
+# Run tests with environment variables
+npm run cypress:run -- --env apiUrl=http://localhost:3001/api
+
+# Run tests in parallel (CI/CD)
+npm run cypress:run -- --parallel --record --key YOUR_RECORD_KEY
+
+# Run tests with custom viewport
+npm run cypress:run -- --config viewportWidth=375,viewportHeight=667
 ```
 
 ### Test Filtering
 
 ```bash
-# Only failing tests
-npm test -- --onlyFailures
+# Run only failing tests
+npm run cypress:run -- --onlyFailures
 
-# Tests with coverage
-npm test -- --coverage --watchAll=false
+# Run tests matching pattern
+npm run cypress:run -- --spec "**/smoke*.cy.ts"
 
-# Tests from specific folder
-npm test -- src/components/__tests__/
+# Run tests in specific folder
+npm run cypress:run -- --spec "cypress/e2e/api/**/*"
 ```
 
 ## 📊 Code Coverage
 
-### Checking Coverage
+### Configuration
 
-```bash
-npm run test:coverage
+```typescript
+// cypress.config.ts
+export default defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      require('@cypress/code-coverage/task')(on, config)
+      return config
+    },
+  },
+  component: {
+    setupNodeEvents(on, config) {
+      require('@cypress/code-coverage/task')(on, config)
+      return config
+    },
+  },
+})
 ```
 
-This will create a coverage report in the `coverage/` folder with detailed information about code coverage by tests.
-
-### Minimum Coverage Requirements
+### Coverage Requirements
 
 - **Statements**: >80%
 - **Branches**: >70%
 - **Functions**: >80%
 - **Lines**: >80%
 
-## 🔧 Jest Configuration
+## 🔧 Advanced Patterns
 
-### jest.config.js
-
-```javascript
-module.exports = {
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
-  moduleNameMapping: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-  },
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    '!src/**/*.d.ts',
-    '!src/index.tsx',
-    '!src/reportWebVitals.ts',
-  ],
-};
-```
-
-### setupTests.ts
+### Custom Commands
 
 ```typescript
-import '@testing-library/jest-dom';
+// cypress/support/commands.ts
+
+// Login command
+Cypress.Commands.add('login', (username: string, password: string) => {
+  cy.session([username, password], () => {
+    cy.visit('/login')
+    cy.findByLabelText(/username/i).type(username)
+    cy.findByLabelText(/password/i).type(password)
+    cy.findByRole('button', { name: /sign in/i }).click()
+    cy.url().should('include', '/dashboard')
+  })
+})
+
+// Create todo command
+Cypress.Commands.add('createTodo', (title: string, description?: string) => {
+  cy.findByRole('textbox', { name: /todo title/i }).type(title)
+  if (description) {
+    cy.findByLabelText(/description/i).type(description)
+  }
+  cy.findByRole('button', { name: /add todo/i }).click()
+})
+
+// Assert todo exists
+Cypress.Commands.add('assertTodoExists', (title: string) => {
+  cy.findByText(title).should('be.visible')
+})
 ```
 
-## 📝 Writing Quality Tests
-
-### 1. Test Names
-
-Use descriptive names:
+### Page Object Pattern
 
 ```typescript
-// ✅ Good
-it('should display error message when API call fails', () => {});
+// cypress/support/page-objects/TodoPage.ts
+class TodoPage {
+  elements = {
+    newTodoInput: () => cy.findByRole('textbox', { name: /todo title/i }),
+    addButton: () => cy.findByRole('button', { name: /add todo/i }),
+    todoList: () => cy.get('[data-testid="todo-list"]'),
+    todoItem: (title: string) => cy.findByText(title),
+    deleteButton: (title: string) => cy.findByRole('button', { name: new RegExp(`delete ${title}`, 'i') })
+  }
 
-// ❌ Bad
-it('should work', () => {});
+  visit() {
+    cy.visit('/')
+    return this
+  }
+
+  addTodo(title: string, description?: string) {
+    this.elements.newTodoInput().type(title)
+    if (description) {
+      cy.findByLabelText(/description/i).type(description)
+    }
+    this.elements.addButton().click()
+    return this
+  }
+
+  assertTodoExists(title: string) {
+    this.elements.todoItem(title).should('be.visible')
+    return this
+  }
+
+  deleteTodo(title: string) {
+    this.elements.deleteButton(title).click()
+    return this
+  }
+}
+
+export default new TodoPage()
 ```
 
-### 2. Test Structure (AAA Pattern)
+### Test Data Factories
 
 ```typescript
-it('should add new todo', async () => {
-  // Arrange - preparation
-  const user = userEvent.setup();
-  const mockOnSubmit = jest.fn();
-  render(<TodoForm onSubmit={mockOnSubmit} />);
+// cypress/support/factories/todoFactory.ts
+export const createTodo = (overrides: Partial<Todo> = {}): Todo => ({
+  id: Math.random().toString(36).substr(2, 9),
+  title: 'Test Todo',
+  description: 'Test Description',
+  completed: false,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+  ...overrides,
+})
 
-  // Act - action
-  const titleInput = screen.getByLabelText(/title/i);
-  await user.type(titleInput, 'New Todo');
-  await user.click(screen.getByRole('button', { name: /add todo/i }));
-
-  // Assert - verification
-  expect(mockOnSubmit).toHaveBeenCalledWith({
-    title: 'New Todo',
-    description: undefined,
-    completed: false
-  });
-});
+export const createTodoList = (count: number): Todo[] => {
+  return Array.from({ length: count }, (_, index) => 
+    createTodo({
+      id: `todo-${index + 1}`,
+      title: `Todo ${index + 1}`,
+      description: `Description for todo ${index + 1}`
+    })
+  )
+}
 ```
 
-### 3. Mocking
+### Visual Testing
 
 ```typescript
-// Mocking modules
-jest.mock('../../hooks/useTodos');
-const mockUseTodos = useTodos as jest.MockedFunction<typeof useTodos>;
+// cypress/e2e/visual.cy.ts
+describe('Visual Testing', () => {
+  beforeEach(() => {
+    cy.visit('/')
+  })
 
-// Mocking HTTP requests
-jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+  it('should match todo list snapshot', () => {
+    // Ensure DOM is stable
+    cy.get('[data-testid="todo-list"]').should('be.visible')
+    
+    // Take snapshot
+    cy.matchImageSnapshot('todo-list-empty')
+  })
+
+  it('should match completed todo snapshot', () => {
+    // Add and complete a todo
+    cy.createTodo('Visual Test Todo')
+    cy.findByRole('checkbox', { name: /mark visual test todo as complete/i }).click()
+    
+    // Wait for state change
+    cy.findByText('Visual Test Todo').should('have.class', 'completed')
+    
+    // Take snapshot
+    cy.matchImageSnapshot('todo-completed')
+  })
+})
 ```
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
-1. **Tests failing due to DOM changes**
-   - Use semantic selectors
-   - Test behavior, not structure
+1. **Flaky Tests**
+   - Use `cy.wait('@alias')` instead of arbitrary waits
+   - Ensure proper state reset in `beforeEach`
+   - Use stable selectors with `data-testid`
 
-2. **Async tests**
-   - Use `waitFor` for async operations
-   - Handle `act` warnings properly
+2. **Element Not Found**
+   - Check if element is in viewport: `cy.get('element').scrollIntoView()`
+   - Wait for element to be visible: `cy.get('element').should('be.visible')`
+   - Use proper selectors: prefer `data-testid` over CSS classes
 
-3. **Mocking**
-   - Clear mocks between tests
-   - Use `jest.clearAllMocks()`
+3. **Network Request Issues**
+   - Intercept requests: `cy.intercept('GET', '/api/todos').as('getTodos')`
+   - Wait for requests: `cy.wait('@getTodos')`
+   - Mock responses: `cy.intercept('GET', '/api/todos', { fixture: 'todos.json' })`
 
-### Useful Commands
+### Debugging Commands
 
 ```bash
-# Detailed test output
-npm test -- --verbose
+# Run tests with debug output
+npm run cypress:run -- --headed --no-exit
 
-# Run specific test in interactive mode
-npm test -- --runInBand --verbose
+# Run specific test with verbose output
+npm run cypress:run -- --spec "cypress/e2e/todo-app.cy.ts" --headed
 
-# Check Jest configuration
-npm test -- --showConfig
+# Check Cypress configuration
+npm run cypress:run -- --showConfig
 ```
 
 ## 📚 Additional Resources
 
-- [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
-- [Jest Documentation](https://jestjs.io/docs/getting-started)
-- [Testing Best Practices](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
-- [Accessibility Testing](https://testing-library.com/docs/dom-testing-library/api-accessibility) 
+- [Cypress Documentation](https://docs.cypress.io/)
+- [Cypress Testing Library](https://github.com/testing-library/cypress-testing-library)
+- [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices)
+- [Accessibility Testing with Cypress](https://docs.cypress.io/guides/end-to-end-testing/accessibility-testing)
+- [Visual Testing with Cypress](https://docs.cypress.io/guides/tooling/visual-testing)
+- [Cypress Real World App](https://github.com/cypress-io/cypress-realworld-app) - Example of best practices 

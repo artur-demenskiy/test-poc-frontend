@@ -1,140 +1,138 @@
 # Todo React App
 
-Modern React application for task management with best testing practices using TDD principles.
+A comprehensive Todo application built with React, TypeScript, and modern testing practices.
 
 ## 🚀 Features
 
-- **TDD approach**: All components and services are written using Test-Driven Development
-- **Complete test coverage**: Unit tests, integration tests, and component tests
-- **Modern UI**: Beautiful and responsive interface with Tailwind CSS
-- **TypeScript**: Full typing for better development
-- **Architecture**: Clean architecture with separation of concerns
-- **API integration**: Ready for integration with NestJS backend
+- ✅ Create, read, update, and delete todos
+- 🎨 Modern UI with Tailwind CSS
+- 📱 Responsive design
+- ♿ Accessibility compliant
+- 🧪 Comprehensive testing suite
+- 🔧 TypeScript support
 
-## 🛠 Technologies
+## 🛠 Tech Stack
 
-- **React 18** with TypeScript
-- **Testing Library** for component testing
-- **Jest** for unit tests
-- **Tailwind CSS** for styling
-- **Axios** for HTTP requests
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **Testing**: Cypress (E2E & Component), Jest, React Testing Library
+- **Build**: Vite, React Scripts
+- **Linting**: ESLint, Prettier
 
-## 📁 Project Structure
+## 📦 Installation
 
-```
-src/
-├── components/          # React components
-│   ├── __tests__/      # Component tests
-│   ├── TodoList.tsx    # Main list component
-│   ├── TodoItem.tsx    # Individual todo component
-│   └── TodoForm.tsx    # Add todo form
-├── hooks/              # Custom hooks
-│   ├── __tests__/      # Hook tests
-│   └── useTodos.ts     # Hook for managing todos
-├── services/           # Services for API work
-│   ├── __tests__/      # Service tests
-│   └── todoService.ts  # Service for working with todos
-├── types/              # TypeScript types
-│   └── todo.ts         # Todo interfaces
-├── __tests__/          # Integration tests
-│   ├── integration.test.tsx
-│   └── utils.test.ts
-└── App.tsx             # Main component
+```bash
+# Clone the repository
+git clone <repository-url>
+cd todo-react-app
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
 ```
 
 ## 🧪 Testing
 
-The project uses TDD approach with complete test coverage:
+This project uses a comprehensive testing approach with **Cypress** as the primary testing framework.
 
-### Test Types:
-- **Unit tests**: Testing individual functions and methods
-- **Integration tests**: Testing interaction between components
-- **Component tests**: Testing React components
-- **Hook tests**: Testing custom hooks
-- **Accessibility tests**: Testing accessibility (ARIA attributes)
-- **Performance tests**: Basic performance tests
+### Quick Start
 
-### Test Structure:
-- **8 test suites** - complete test set
-- **89 tests** - covering all functionality
-- **100% successful tests** - all tests pass
-
-### Running Tests:
 ```bash
-# All tests
-npm test
+# Run all tests
+npm run test:all
 
-# Tests in watch mode
-npm run test:watch
+# Run E2E tests only
+npm run cypress:run
 
-# Code coverage
-npm run test:coverage
+# Open Cypress Test Runner
+npm run cypress:open
 
-# Specific file
-npm test -- TodoItem.test.tsx
+# Run component tests
+npm run cypress:component
 ```
 
-## 🚀 Installation and Setup
+### Test Types
 
-1. **Clone repository:**
+- **E2E Tests**: Full user workflows and critical paths
+- **Component Tests**: Isolated component testing
+- **API Tests**: Backend integration testing
+- **Accessibility Tests**: WCAG 2.1 AA compliance
+- **Performance Tests**: Load times and Core Web Vitals
+- **Unit Tests**: Individual functions and components
+
+### Test Commands
+
 ```bash
-git clone <repository-url>
-cd todo-react-app
+# Specific test suites
+npm run test:smoke          # Critical functionality
+npm run test:api            # API integration
+npm run test:accessibility  # Accessibility compliance
+npm run test:performance    # Performance benchmarks
+npm run test:mobile         # Mobile device testing
+
+# Advanced commands
+npm run test:cross-browser  # Multiple browsers
+npm run test:nightly        # Full nightly suite
+npm run test:weekly         # Comprehensive weekly tests
 ```
 
-2. **Install dependencies:**
-```bash
-npm install
-```
+## 📚 Documentation
 
-3. **Run in development mode:**
+For detailed testing documentation and best practices, see:
+
+- **[TESTING.md](./TESTING.md)** - Comprehensive testing guide with Cypress best practices
+- **[Cypress Configuration](./cypress.config.ts)** - Test configuration
+- **[Test Examples](./cypress/e2e/)** - E2E test examples
+- **[Component Tests](./cypress/component/)** - Component testing examples
+
+## 🏆 Best Practices Implemented
+
+- ✅ **Test Isolation**: Each test runs independently
+- ✅ **Accessibility-First**: Using Cypress Testing Library
+- ✅ **Stable Selectors**: Data attributes and semantic queries
+- ✅ **Network Handling**: Proper request interception and waiting
+- ✅ **Performance Monitoring**: Core Web Vitals testing
+- ✅ **Custom Commands**: Reusable test actions
+- ✅ **Page Objects**: Organized test structure
+
+## 🔧 Development
+
 ```bash
+# Development server
 npm start
-```
 
-4. **Run tests:**
-```bash
-npm test
-```
-
-5. **Build for production:**
-```bash
+# Build for production
 npm run build
+
+# Lint code
+npm run lint
+
+# Type checking
+npm run type-check
 ```
 
-## 🔧 Configuration
+## 📊 Code Coverage
 
-### API URL
-By default, the application is configured to work with NestJS backend on `http://localhost:3000/api/todos`.
+The project maintains high code coverage standards:
 
-To change the API URL, edit the file `src/services/todoService.ts`:
+- **Statements**: >80%
+- **Branches**: >70%
+- **Functions**: >80%
+- **Lines**: >80%
 
-```typescript
-constructor(apiUrl: string = 'http://localhost:3000/api/todos') {
-  this.apiUrl = apiUrl;
-}
-```
+## 🤝 Contributing
 
-## 📊 Test Statistics
+1. Fork the repository
+2. Create a feature branch
+3. Write tests for new functionality
+4. Ensure all tests pass
+5. Submit a pull request
 
-- **Total tests**: 89
-- **Test suites**: 8
-- **Successful tests**: 89
-- **Code coverage**: High
-- **Execution time**: ~5 seconds
+## 📄 License
 
-## 🏆 Best Practices
+This project is licensed under the MIT License.
 
-The project demonstrates best testing practices:
+---
 
-- **Test Data Factories** - factories for creating test data
-- **User-Centric Testing** - testing from user perspective
-- **Proper Test Organization** - correct test organization
-- **Accessibility Testing** - testing accessibility
-- **Error Handling** - testing error handling
-- **Integration Testing** - testing component interaction
-
-## 📝 License
-
-MIT License
-# test-poc-frontend
+**Happy Testing! 🧪✨**

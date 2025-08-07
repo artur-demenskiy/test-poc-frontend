@@ -8,28 +8,36 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+// Import Cypress Testing Library for accessibility-first testing
+import '@testing-library/cypress/add-commands'
+
 // Add custom commands for better test organization
 Cypress.Commands.add('login', (email: string, password: string) => {
   cy.visit('/login');
-  cy.get('[data-testid=email-input]').type(email);
-  cy.get('[data-testid=password-input]').type(password);
-  cy.get('[data-testid=login-button]').click();
+  cy.findByLabelText(/email/i).type(email);
+  cy.findByLabelText(/password/i).type(password);
+  cy.findByRole('button', { name: /sign in/i }).click();
 });
 
 Cypress.Commands.add('createTodo', (title: string, description?: string) => {
-  cy.get('[data-testid=todo-form]').within(() => {
-    cy.get('[data-testid=todo-title-input]').type(title);
-    if (description) {
-      cy.get('[data-testid=todo-description-input]').type(description);
-    }
-    cy.get('[data-testid=add-todo-button]').click();
-  });
+  cy.findByRole('textbox', { name: /todo title/i }).type(title);
+  if (description) {
+    cy.findByLabelText(/description/i).type(description);
+  }
+  cy.findByRole('button', { name: /add todo/i }).click();
 });
 
-Cypress.Commands.add('deleteTodo', (todoId: string) => {
-  cy.get(`[data-testid=todo-item-${todoId}]`).within(() => {
-    cy.get('[data-testid=delete-todo-button]').click();
-  });
+Cypress.Commands.add('deleteTodo', (title: string) => {
+  cy.findByRole('button', { name: new RegExp(`delete ${title}`, 'i') }).click();
+});
+
+// Add custom commands for data-testid selectors (fallback)
+Cypress.Commands.add('getByTestId', (selector: string, ...args) => {
+  return cy.get(`[data-testid=${selector}]`, ...args);
+});
+
+Cypress.Commands.add('getByTestIdLike', (selector: string, ...args) => {
+  return cy.get(`[data-testid*=${selector}]`, ...args);
 });
 
 // Add custom assertions
@@ -66,7 +74,9 @@ declare global {
     interface Chainable {
       login(email: string, password: string): Chainable<void>;
       createTodo(title: string, description?: string): Chainable<void>;
-      deleteTodo(todoId: string): Chainable<void>;
+      deleteTodo(title: string): Chainable<void>;
+      getByTestId(selector: string, ...args: any[]): Chainable<JQuery<HTMLElement>>;
+      getByTestIdLike(selector: string, ...args: any[]): Chainable<JQuery<HTMLElement>>;
       shouldHaveAccessibility(): Chainable<void>;
       measurePerformance(): Chainable<void>;
       apiRequest(method: string, endpoint: string, body?: any): Chainable<any>;

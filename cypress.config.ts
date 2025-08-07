@@ -17,6 +17,14 @@ export default defineConfig({
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      on('task', {
+        async 'db:seed'() {
+          // Mock database seeding for demo purposes
+          // In a real app, this would connect to your database
+          console.log('Database seeded successfully')
+          return { success: true }
+        },
+      })
     },
   },
   component: {

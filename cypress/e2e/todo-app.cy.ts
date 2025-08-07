@@ -179,5 +179,4 @@ describe('Todo Application E2E Tests', () => {
       cy.get('[data-testid=validation-error]').should('contain', 'Title is required');
     });
   });
-}); 
-}); 
+});
