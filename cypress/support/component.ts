@@ -2,7 +2,7 @@
 import './commands'
 
 // Global configuration for component tests
-Cypress.on('uncaught:exception', (err, runnable) => {
+Cypress.on('uncaught:exception', (err, _runnable) => {
   // Returning false here prevents Cypress from failing the test
   // on uncaught exceptions
   if (err.message.includes('ResizeObserver loop limit exceeded')) {
