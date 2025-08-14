@@ -1,8 +1,0 @@
-{
-  "id": 1,
-  "title": "Updated Todo Title",
-  "description": "Updated description for the todo",
-  "completed": true,
-  "createdAt": "2024-01-15T10:30:00.000Z",
-  "updatedAt": "2024-01-15T15:30:00.000Z"
-} 

@@ -1,133 +1,207 @@
-# Todo React App
+# React TypeScript Boilerplate
 
-A comprehensive Todo application built with React, TypeScript, and modern testing practices.
+A production-ready React application template built with modern technologies and best practices.
 
 ## 🚀 Features
 
-- ✅ Create, read, update, and delete todos
-- 🎨 Modern UI with Tailwind CSS
-- 📱 Responsive design
-- ♿ Accessibility compliant
-- 🧪 Comprehensive testing suite
-- 🔧 TypeScript support
+- **React 19** with TypeScript strict mode
+- **Vite** with React SWC for lightning-fast builds
+- **Tailwind CSS** for utility-first styling
+- **ESLint + Prettier** for code quality
+- **Vitest** for testing with React Testing Library
+- **Error Boundary** with comprehensive logging
+- **Zod** for runtime validation
+- **Modern project structure** with path aliases
+- **Production optimizations** with code splitting
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: React 18, TypeScript, Tailwind CSS
-- **Testing**: Cypress (E2E & Component), Jest, React Testing Library
-- **Build**: Vite, React Scripts
-- **Linting**: ESLint, Prettier
+- **Frontend**: React 19, TypeScript, Vite
+- **Styling**: Tailwind CSS, PostCSS, Autoprefixer
+- **Testing**: Vitest, React Testing Library, jsdom
+- **Code Quality**: ESLint, Prettier, EditorConfig
+- **Validation**: Zod
+- **Build Tool**: Vite with React SWC
 
-## 📦 Installation
+## 📋 Prerequisites
 
-```bash
-# Clone the repository
-git clone <repository-url>
-cd todo-react-app
+- Node.js 20+ 
+- pnpm 8+
 
-# Install dependencies
-npm install
+## 🚀 Quick Start
 
-# Start development server
-npm start
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd react-ts-boilerplate
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp env.example .env
+   # Edit .env with your configuration
+   ```
+
+4. **Start development server**
+   ```bash
+   pnpm dev
+   ```
+
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   └── ErrorBoundary.tsx
+├── types/              # TypeScript type definitions
+│   ├── env.d.ts        # Vite environment types
+│   └── index.ts        # Common types
+├── utils/              # Utility functions
+│   ├── api.ts          # API client utilities
+│   ├── logger.ts       # Logging utilities
+│   └── validation.ts   # Zod validation schemas
+├── test/               # Test configuration
+│   └── setup.ts        # Test setup and mocks
+├── App.tsx             # Main application component
+├── index.css           # Global styles with Tailwind
+└── main.tsx            # Application entry point
 ```
 
 ## 🧪 Testing
 
-This project uses a comprehensive testing approach with **Cypress** as the primary testing framework.
-
-### Quick Start
-
 ```bash
-# Run all tests
-npm run test:all
+# Run tests in watch mode
+pnpm test
 
-# Run E2E tests only
-npm run cypress:run
+# Run tests once
+pnpm test:run
 
-# Open Cypress Test Runner
-npm run cypress:open
+# Run tests with coverage
+pnpm test:coverage
 
-# Run component tests
-npm run cypress:component
+# Run tests with UI
+pnpm test:ui
 ```
-
-### Test Types
-
-- **E2E Tests**: Full user workflows and critical paths
-- **Component Tests**: Isolated component testing
-- **API Tests**: Backend integration testing
-- **Accessibility Tests**: WCAG 2.1 AA compliance
-- **Performance Tests**: Load times and Core Web Vitals
-- **Unit Tests**: Individual functions and components
-
-### Test Commands
-
-```bash
-# Specific test suites
-npm run test:smoke          # Critical functionality
-npm run test:api            # API integration
-npm run test:accessibility  # Accessibility compliance
-npm run test:performance    # Performance benchmarks
-npm run test:mobile         # Mobile device testing
-
-# Advanced commands
-npm run test:cross-browser  # Multiple browsers
-npm run test:nightly        # Full nightly suite
-npm run test:weekly         # Comprehensive weekly tests
-```
-
-## 📚 Documentation
-
-For detailed testing documentation and best practices, see:
-
-- **[TESTING.md](./TESTING.md)** - Comprehensive testing guide with Cypress best practices
-- **[Cypress Configuration](./cypress.config.ts)** - Test configuration
-- **[Test Examples](./cypress/e2e/)** - E2E test examples
-- **[Component Tests](./cypress/component/)** - Component testing examples
-
-## 🏆 Best Practices Implemented
-
-- ✅ **Test Isolation**: Each test runs independently
-- ✅ **Accessibility-First**: Using Cypress Testing Library
-- ✅ **Stable Selectors**: Data attributes and semantic queries
-- ✅ **Network Handling**: Proper request interception and waiting
-- ✅ **Performance Monitoring**: Core Web Vitals testing
-- ✅ **Custom Commands**: Reusable test actions
-- ✅ **Page Objects**: Organized test structure
 
 ## 🔧 Development
 
 ```bash
-# Development server
-npm start
+# Start development server
+pnpm dev
 
 # Build for production
-npm run build
+pnpm build
+
+# Preview production build
+pnpm preview
 
 # Lint code
-npm run lint
+pnpm lint
 
-# Type checking
-npm run type-check
+# Fix linting issues
+pnpm lint:fix
+
+# Type check
+pnpm type-check
+
+# Format code
+pnpm format
+
+# Check formatting
+pnpm format:check
 ```
 
-## 📊 Code Coverage
+## 📦 Build & Deployment
 
-The project maintains high code coverage standards:
+```bash
+# Build for production
+pnpm build
 
-- **Statements**: >80%
-- **Branches**: >70%
-- **Functions**: >80%
-- **Lines**: >80%
+# The build output will be in the `dist/` folder
+# Ready for deployment to any static hosting service
+```
+
+## 🌍 Environment Variables
+
+Create a `.env` file based on `env.example`:
+
+```env
+# Application
+VITE_APP_TITLE=React TypeScript Boilerplate
+VITE_APP_VERSION=0.1.0
+VITE_APP_ENV=development
+
+# API Configuration
+VITE_API_URL=http://localhost:3001/api
+
+# Feature Flags
+VITE_ENABLE_LOGGING=true
+VITE_ENABLE_ANALYTICS=false
+```
+
+## 🎯 Key Features Explained
+
+### Error Boundary
+- Catches JavaScript errors anywhere in the component tree
+- Logs errors with context for debugging
+- Provides user-friendly error UI
+- Configurable fallback components
+
+### Logging System
+- Lightweight logger with different log levels
+- Development vs production behavior
+- Structured logging with context
+- Easy integration with external services
+
+### Validation with Zod
+- Runtime type validation
+- Form validation schemas
+- API response validation
+- Environment variable validation
+
+### API Utilities
+- Fetch-based HTTP client
+- Request/response interceptors
+- Error handling and logging
+- Timeout and retry logic
+
+## 🔮 Next Steps
+
+This boilerplate is ready for you to:
+
+1. **Add routing** with React Router v6
+2. **Implement state management** (Redux Toolkit, Zustand, etc.)
+3. **Add authentication** and protected routes
+4. **Set up CI/CD** with GitHub Actions
+5. **Add Docker** configuration
+6. **Implement testing** for your components
+7. **Add Storybook** for component development
+
+## 📚 Documentation
+
+- [React Documentation](https://react.dev/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Vite Guide](https://vitejs.dev/guide/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Vitest](https://vitest.dev/)
+- [Zod](https://zod.dev/)
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Write tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
+3. Make your changes
+4. Add tests if applicable
+5. Ensure all tests pass
+6. Submit a pull request
 
 ## 📄 License
 
@@ -135,4 +209,4 @@ This project is licensed under the MIT License.
 
 ---
 
-**Happy Testing! 🧪✨**
+**Happy coding! 🚀**

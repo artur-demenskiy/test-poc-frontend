@@ -1,111 +1,71 @@
 {
-  "name": "todo-react-app",
-  "version": "0.1.0",
+  "name": "react-ts-boilerplate",
   "private": true,
-  "dependencies": {
-    "@testing-library/react": "^13.3.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.56",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "axios": "^0.27.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4"
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:watch": "react-scripts test --watch",
-    "test:coverage": "react-scripts test --coverage --watchAll=false",
-    "test:ci": "react-scripts test --coverage --watchAll=false --passWithNoTests",
-    "eject": "react-scripts eject",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:run:headed": "cypress run --headed",
-    "cypress:run:chrome": "cypress run --browser chrome",
-    "cypress:run:firefox": "cypress run --browser firefox",
-    "cypress:run:edge": "cypress run --browser edge",
-    "cypress:component": "cypress run --component",
-    "test:all": "npm run test:ci && npm run cypress:run",
-    "test:e2e": "npm run cypress:run",
-    "test:unit": "npm run test:ci",
-    "test:integration": "npm run cypress:run",
-    "test:performance": "npm run cypress:run -- --spec 'cypress/e2e/performance.cy.ts'",
-    "test:accessibility": "npm run cypress:run -- --spec 'cypress/e2e/accessibility.cy.ts'",
-    "test:mobile": "npm run cypress:run --config viewportWidth=375,viewportHeight=667",
-    "test:cross-browser": "npm run cypress:run:chrome && npm run cypress:run:firefox && npm run cypress:run:edge",
-    "test:api": "npm run cypress:run -- --spec 'cypress/e2e/api.cy.ts'",
-    "test:smoke": "npm run cypress:run -- --spec 'cypress/e2e/smoke.cy.ts'",
-    "test:nightly": "npm run test:all",
-    "test:weekly": "npm run test:all && npm run test:performance && npm run test:accessibility",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
     "type-check": "tsc --noEmit",
-    "build:analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js",
-    "precommit": "npm run lint && npm run type-check && npm run test:unit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "test:run": "vitest run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^6.28.0",
+    "@tanstack/react-query": "^5.59.16",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@cypress/react": "^7.0.3",
-    "@cypress/vite-dev-server": "^5.2.1",
-    "@testing-library/cypress": "^10.0.3",
-    "@testing-library/jest-dom": "^6.6.4",
-    "@testing-library/react-hooks": "^8.0.1",
-    "@testing-library/user-event": "^14.6.1",
-    "cypress": "^13.17.0",
-    "husky": "^8.0.3",
-    "jest-environment-jsdom": "^30.0.5",
-    "lint-staged": "^13.2.3"
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@types/node": "^22.10.2",
+    "@vitejs/plugin-react": "^5.0.0",
+    "@vitejs/plugin-react-swc": "^4.0.0",
+    "vite": "^7.1.2",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-jsx-a11y": "^6.10.1",
+    "eslint-plugin-import": "^2.31.1",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.4.38",
+    "autoprefixer": "^10.4.20",
+    "vitest": "^2.1.8",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.5.2",
+    "jsdom": "^25.0.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.10",
+    "globals": "^16.3.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{ts,tsx,js,jsx}": [
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md}": [
+    "*.{json,md,yml,yaml}": [
       "prettier --write"
     ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}",
-      "!src/**/*.d.ts",
-      "!src/index.tsx",
-      "!src/reportWebVitals.ts"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    }
   }
 }
