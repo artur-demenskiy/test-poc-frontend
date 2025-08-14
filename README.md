@@ -4,108 +4,115 @@ A production-ready React application template with modern tooling, comprehensive
 
 ## 🚀 Features
 
-### Core Features
 - **React 19.1.1** + **TypeScript 5.8.3** with strict mode
 - **Vite** with React SWC for lightning-fast builds
-- **Tailwind CSS** with utility-first approach
 - **React Router v6** for client-side routing
-- **Error Boundary** with comprehensive logging
-- **Zod** for runtime type validation
-
-### Development Tools
-- **ESLint** + **Prettier** + **EditorConfig** for code quality
-- **Vitest** + **React Testing Library** for comprehensive testing
-- **Husky** + **lint-staged** for Git hooks
-- **TypeScript** strict mode with comprehensive type checking
-
-### Production Ready
-- **Multi-stage Docker** build (builder → nginx)
+- **Tailwind CSS** for utility-first styling
+- **Vitest** + **React Testing Library** for unit testing
+- **Cypress** for E2E and component testing
+- **ESLint** + **Prettier** for code quality
+- **Git hooks** with Husky + lint-staged
 - **GitHub Actions** CI/CD pipeline
-- **Code splitting** and **tree shaking**
-- **Security headers** and **optimized nginx**
-- **Health checks** and **monitoring ready**
+- **Docker** multi-stage build with Nginx
+- **Error Boundary** with comprehensive logging
+- **Zod** validation schemas
+- **API utilities** with fetch wrapper
 
 ## 📋 Prerequisites
 
-- **Node.js** 20.0.0 or higher
-- **pnpm** 8.0.0 or higher
+- **Node.js** 20+ 
+- **pnpm** 10.12.3+
 
 ## 🚀 Quick Start
 
-### 1. Clone the repository
 ```bash
+# Clone the repository
 git clone <your-repo-url>
 cd react-ts-boilerplate
-```
 
-### 2. Install dependencies
-```bash
+# Install dependencies
 pnpm install
-```
 
-### 3. Set up environment variables
-```bash
-cp env.example .env
-# Edit .env with your configuration
-```
-
-### 4. Start development server
-```bash
+# Start development server
 pnpm dev
+
+# Open in browser
+open http://localhost:3000
 ```
 
-The application will be available at `http://localhost:3000`
+## 🧪 Testing
 
-## 📁 Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-│   ├── Layout.tsx      # Main layout with navigation
-│   └── ErrorBoundary.tsx # Error handling component
-├── pages/              # Route components
-│   ├── Home.tsx        # Home page
-│   ├── About.tsx       # About page
-│   ├── Features.tsx    # Features page
-│   └── NotFound.tsx    # 404 page
-├── types/              # TypeScript type definitions
-│   ├── env.d.ts        # Environment variables types
-│   └── index.ts        # Common types
-├── utils/              # Utility functions
-│   ├── api.ts          # API client with fetch wrapper
-│   ├── logger.ts       # Structured logging
-│   └── validation.ts   # Zod validation schemas
-├── test/               # Test setup and utilities
-│   └── setup.ts        # Vitest configuration
-├── App.tsx             # Main app component with routing
-├── main.tsx            # App entry point
-└── index.css           # Global styles with Tailwind
-```
-
-## 🛠️ Available Scripts
-
-### Development
+### Unit & Integration Tests (Vitest)
 ```bash
-pnpm dev          # Start development server
-pnpm build        # Build for production
-pnpm preview      # Preview production build
+# Run tests in watch mode
+pnpm test
+
+# Run tests with UI
+pnpm test:ui
+
+# Run tests once
+pnpm test:run
+
+# Run tests with coverage
+pnpm test:coverage
 ```
 
-### Code Quality
+### E2E Tests (Cypress)
 ```bash
-pnpm lint         # Run ESLint
-pnpm lint:fix     # Fix ESLint issues
-pnpm type-check   # Run TypeScript type check
-pnpm format       # Format code with Prettier
-pnpm format:check # Check code formatting
+# Open Cypress Test Runner
+pnpm cypress:open
+
+# Run E2E tests with dev server
+pnpm test:e2e
+
+# Run component tests with dev server
+pnpm test:component
+
+# Run tests in headless mode
+pnpm cypress:run
 ```
 
-### Testing
+### Component Tests (Cypress)
 ```bash
-pnpm test         # Run tests in watch mode
-pnpm test:ui      # Run tests with UI
-pnpm test:run     # Run tests once
-pnpm test:coverage # Run tests with coverage
+# Run component tests
+pnpm cypress:run:component
+```
+
+## 🛠️ Development Commands
+
+```bash
+# Development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+
+# Lint code
+pnpm lint
+
+# Fix linting issues
+pnpm lint:fix
+
+# Type checking
+pnpm type-check
+
+# Format code
+pnpm format
+
+# Check formatting
+pnpm format:check
+```
+
+## 🏗️ Build & Deployment
+
+```bash
+# Build application
+pnpm build
+
+# Build creates optimized files in dist/ directory
 ```
 
 ## 🐳 Docker
@@ -115,204 +122,160 @@ pnpm test:coverage # Run tests with coverage
 # Start development environment
 docker-compose --profile dev up
 
-# Build and start development container
-docker-compose --profile dev up --build
+# Or build and run manually
+docker build --target builder -t react-boilerplate:dev .
+docker run -p 3000:3000 -v $(pwd):/app react-boilerplate:dev
 ```
 
 ### Production
 ```bash
-# Build and start production environment
-docker-compose --profile prod up --build
+# Build and run production container
+docker-compose --profile prod up
 
-# Build production image only
-docker build -t react-boilerplate:latest .
+# Or manually
+docker build -t react-boilerplate:prod .
+docker run -p 80:80 react-boilerplate:prod
 ```
 
-### Docker Commands
+## 🔧 Environment Variables
+
+Create `.env` file based on `.env.example`:
+
 ```bash
-# Build image
-docker build -t react-boilerplate .
-
-# Run container
-docker run -p 80:80 react-boilerplate
-
-# Run with custom nginx config
-docker run -p 80:80 -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf react-boilerplate
+VITE_APP_TITLE=React Boilerplate
+VITE_APP_VERSION=0.1.0
+VITE_APP_ENV=development
+VITE_API_URL=http://localhost:3001/api
 ```
 
-## 🔄 CI/CD Pipeline
+## 📁 Project Structure
 
-The project includes a comprehensive GitHub Actions workflow:
-
-### Pipeline Stages
-1. **Lint & Type Check** - ESLint and TypeScript validation
-2. **Test** - Unit tests with coverage reporting
-3. **Build** - Production build with artifacts
-4. **Security** - Dependency vulnerability audit
-5. **Deploy** - Automatic deployment to staging/production
-
-### Workflow Triggers
-- **Push** to `main` or `develop` branches
-- **Pull Request** to `main` or `develop` branches
-
-### Environment Deployments
-- **Staging** - Automatic deployment on `develop` branch
-- **Production** - Automatic deployment on `main` branch
-
-## 🌐 Routing
-
-The application uses React Router v6 with the following routes:
-
-- `/` - Home page with feature overview
-- `/about` - About page with project information
-- `/features` - Detailed features and capabilities
-- `/*` - 404 page for unmatched routes
-
-## 🎨 Styling
-
-- **Tailwind CSS** for utility-first styling
-- **PostCSS** with **Autoprefixer** for cross-browser compatibility
-- **Custom CSS classes** defined in `src/index.css`
-- **Responsive design** with mobile-first approach
-
-## 🧪 Testing
-
-### Testing Stack
-- **Vitest** - Fast unit testing framework
-- **React Testing Library** - Component testing utilities
-- **jsdom** - DOM environment for tests
-- **Coverage reporting** with built-in support
-
-### Test Structure
 ```
 src/
-├── test/
-│   └── setup.ts        # Global test configuration
-├── components/
-│   └── __tests__/      # Component tests (to be added)
-└── utils/
-    └── __tests__/      # Utility tests (to be added)
+├── components/          # Reusable UI components
+│   ├── Layout.tsx      # Main layout with navigation
+│   └── ErrorBoundary.tsx # Error boundary component
+├── pages/              # Route components
+│   ├── Home.tsx        # Home page
+│   ├── About.tsx       # About page
+│   ├── Features.tsx    # Features page
+│   └── NotFound.tsx    # 404 page
+├── types/              # TypeScript type definitions
+│   ├── index.ts        # Common types
+│   └── env.d.ts        # Environment variable types
+├── utils/              # Utility functions
+│   ├── logger.ts       # Logging utility
+│   ├── api.ts          # API client
+│   └── validation.ts   # Zod validation schemas
+├── test/               # Test setup and utilities
+├── App.tsx             # Main app component
+├── main.tsx            # App entry point
+└── index.css           # Global styles
+
+cypress/                # Cypress testing
+├── e2e/                # End-to-end tests
+├── component/          # Component tests
+├── support/            # Support files
+└── fixtures/           # Test data
+
+.github/workflows/      # GitHub Actions CI/CD
+├── ci.yml              # Main CI pipeline
+
+Dockerfile              # Multi-stage Docker build
+nginx.conf              # Nginx configuration
+docker-compose.yml      # Docker services
 ```
+
+## 🧪 Testing Stack
+
+### Vitest (Unit & Integration)
+- **Fast execution** with Vite integration
+- **React Testing Library** for component testing
+- **jsdom** for DOM environment
+- **Coverage reporting** with v8 provider
+
+### Cypress (E2E & Component)
+- **E2E Testing** for complete user journeys
+- **Component Testing** for isolated component testing
+- **Custom Commands** for common operations
+- **Vite Integration** for fast component tests
 
 ## 🔧 Configuration Files
 
 - **`vite.config.ts`** - Vite build configuration
 - **`tsconfig.json`** - TypeScript configuration
 - **`tailwind.config.js`** - Tailwind CSS configuration
-- **`eslint.config.js`** - ESLint configuration
-- **`vitest.config.ts`** - Vitest configuration
-- **`Dockerfile`** - Multi-stage Docker build
-- **`docker-compose.yml`** - Local development environment
-- **`nginx.conf`** - Production nginx configuration
+- **`eslint.config.js`** - ESLint rules and configuration
+- **`prettier.config.js`** - Prettier formatting rules
+- **`cypress.config.ts`** - Cypress testing configuration
 
-## 🚀 Deployment
+## 🚀 CI/CD Pipeline
 
-### Manual Deployment
-```bash
-# Build the application
-pnpm build
+GitHub Actions workflow includes:
 
-# Deploy dist/ folder to your hosting service
-# (Netlify, Vercel, AWS S3, etc.)
-```
+1. **Lint & Type Check** - ESLint and TypeScript validation
+2. **Testing** - Unit tests with coverage upload
+3. **Build** - Production build with artifact upload
+4. **Security Audit** - Dependency vulnerability check
+5. **Deploy** - Conditional deployment to staging/production
 
-### Docker Deployment
-```bash
-# Build production image
-docker build -t react-boilerplate:latest .
+## 🐳 Docker Features
 
-# Run in production
-docker run -d -p 80:80 --name react-app react-boilerplate:latest
-```
-
-### CI/CD Deployment
-The GitHub Actions workflow automatically deploys:
-- **Staging** environment on `develop` branch
-- **Production** environment on `main` branch
+- **Multi-stage build** (builder → nginx)
+- **Production nginx** with security headers
+- **Non-root user** for security
+- **Health checks** for container monitoring
+- **Optimized caching** for static assets
 
 ## 🔒 Security Features
 
-- **Security headers** in nginx configuration
-- **Content Security Policy** (CSP)
-- **XSS protection** and **frame options**
+- **Security headers** (X-Frame-Options, CSP, etc.)
 - **Non-root user** in Docker containers
-- **Dependency vulnerability** scanning in CI/CD
+- **Dependency auditing** in CI pipeline
+- **Environment validation** with Zod schemas
 
-## 📊 Performance Features
+## ⚡ Performance Features
 
-- **Code splitting** for optimal bundle sizes
+- **Code splitting** for vendor libraries
 - **Tree shaking** for dead code elimination
-- **Gzip compression** for faster loading
-- **Static asset caching** with long-term headers
-- **Source maps** for debugging (development only)
+- **Gzip compression** for static assets
+- **Optimized caching** strategies
+- **Fast refresh** in development
 
-## 🐛 Error Handling
+## 🚨 Error Handling
 
-- **Error Boundary** component for React error catching
-- **Structured logging** with different levels
-- **Error reporting** ready for production monitoring
-- **Graceful fallbacks** for failed components
+- **Error Boundary** component for React errors
+- **Comprehensive logging** with structured output
+- **Error reporting** integration ready
+- **Graceful fallbacks** for user experience
 
-## 📝 Environment Variables
+## 📚 Next Steps
 
-Create a `.env` file based on `env.example`:
+1. **Add React Query** for data fetching
+2. **Implement authentication** and protected routes
+3. **Add state management** (Redux Toolkit, Zustand)
+4. **Set up Storybook** for component documentation
+5. **Add performance monitoring** (Lighthouse CI)
+6. **Implement PWA** features
 
-```bash
-# Application
-VITE_APP_TITLE=React TypeScript Boilerplate
-VITE_APP_VERSION=0.1.0
-VITE_APP_ENV=development
+## 🔗 Documentation Links
 
-# API Configuration
-VITE_API_URL=http://localhost:3001/api
-
-# Feature Flags
-VITE_ENABLE_LOGGING=true
-VITE_ENABLE_ANALYTICS=false
-```
+- [React Documentation](https://react.dev/)
+- [Vite Documentation](https://vitejs.dev/)
+- [TypeScript Documentation](https://www.typescriptlang.org/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/)
+- [Cypress Documentation](https://docs.cypress.io/)
+- [Vitest Documentation](https://vitest.dev/)
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-- Follow TypeScript strict mode
-- Write tests for new features
-- Use ESLint and Prettier for code formatting
-- Follow the established project structure
-- Update documentation as needed
-
-## 📚 Documentation
-
-- **This README** - Project overview and setup
-- **Code comments** - Inline documentation
-- **TypeScript types** - Self-documenting code
-- **Test files** - Usage examples
-
-## 🔗 Useful Links
-
-- [React Documentation](https://react.dev/)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [Vite Guide](https://vitejs.dev/guide/)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [Vitest](https://vitest.dev/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Ensure all tests pass
+6. Submit a pull request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- React team for the amazing framework
-- Vite team for the fast build tool
-- Tailwind CSS team for the utility-first CSS framework
-- All contributors and maintainers
-
----
-
-**Happy coding! 🎉**
+This project is licensed under the MIT License.
