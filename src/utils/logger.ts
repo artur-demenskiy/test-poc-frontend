@@ -29,15 +29,15 @@ class Logger {
       message,
       timestamp: new Date().toISOString(),
     }
-    
+
     if (context !== undefined) {
       entry.context = context
     }
-    
+
     if (error !== undefined) {
       entry.error = error
     }
-    
+
     return entry
   }
 
@@ -78,7 +78,7 @@ class Logger {
     if (this.shouldLog('error')) {
       const entry = this.createLogEntry('error', message, context, error)
       console.error(this.formatMessage(entry))
-      
+
       // In production, you might want to send this to an error reporting service
       if (!this.isDevelopment && error) {
         // Example: Sentry.captureException(error)

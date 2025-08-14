@@ -50,17 +50,17 @@ class ApiClient {
       return data
     } catch (error) {
       clearTimeout(timeoutId)
-      
+
       if (error instanceof Error) {
         if (error.name === 'AbortError') {
           logger.error('API Request timeout', { url, timeout: this.config.timeout })
           throw new Error('Request timeout')
         }
-        
+
         logger.error('API Request failed', { url, error: error.message })
         throw error
       }
-      
+
       throw new Error('Unknown error occurred')
     }
   }
