@@ -5,8 +5,8 @@ FROM node:20-alpine AS builder
 # Set working directory
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm@8
+# Install pnpm (use exact version from package.json)
+RUN npm install -g pnpm@10.12.3
 
 # Copy package files
 COPY package.json pnpm-lock.yaml ./
@@ -33,11 +33,12 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-# Change ownership of the web root
+# Create necessary directories and set permissions
+RUN mkdir -p /var/cache/nginx /var/log/nginx /run
 RUN chown -R nextjs:nodejs /usr/share/nginx/html
 RUN chown -R nextjs:nodejs /var/cache/nginx
 RUN chown -R nextjs:nodejs /var/log/nginx
-RUN chown -R nextjs:nodejs /etc/nginx/conf.d
+RUN chown -R nextjs:nodejs /run
 
 # Switch to non-root user
 USER nextjs
