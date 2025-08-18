@@ -105,7 +105,7 @@ export async function checkUserRole(role: string): Promise<boolean> {
     
     // You can implement role checking logic here
     // For example, check user metadata or a separate roles table
-    return user.user_metadata?.role === role || false
+    return user.user_metadata?.['role'] === role || false
   } catch {
     return false
   }

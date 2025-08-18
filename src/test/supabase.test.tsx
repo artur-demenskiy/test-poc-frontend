@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { Auth } from '../components/Auth'
 import { UserProfile } from '../components/UserProfile'
@@ -231,7 +231,6 @@ describe('Supabase Components', () => {
         error: { message: 'Database error' },
         fetchData: vi.fn(),
         insert: vi.fn(),
-        update: vi.fn(),
         update: vi.fn(),
         remove: vi.fn(),
         subscribe: vi.fn(() => ({ unsubscribe: vi.fn() }))

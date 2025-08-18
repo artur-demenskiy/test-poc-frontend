@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { PostgrestError } from '@supabase/supabase-js'
 import { supabase } from '../lib/supabase'
-import { Tables, Inserts, Updates } from '../types/supabase'
+import { Tables, Inserts, Updates, Database } from '../types/supabase'
 
 interface DatabaseState<T extends keyof Database['public']['Tables']> {
   data: Tables<T>[] | null

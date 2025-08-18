@@ -11,7 +11,7 @@ export function DataManager() {
   const [editingItem, setEditingItem] = useState<DataItem | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   
-  const { data, loading, error, fetchData, insert, update, remove, subscribe } = useDatabase<DataItem>(tableName)
+  const { data, loading, error, fetchData, insert, update, remove, subscribe } = useDatabase('items')
 
   useEffect(() => {
     fetchData()
@@ -158,7 +158,7 @@ export function DataManager() {
             </tr>
           </thead>
           <tbody>
-            {data?.map((item) => (
+            {data?.map((item: DataItem) => (
               <tr key={item.id} className="hover:bg-gray-50">
                 <td className="px-4 py-2 border-b">
                   {editingItem?.id === item.id ? (
