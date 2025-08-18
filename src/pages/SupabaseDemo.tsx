@@ -1,7 +1,9 @@
-import { useAuthContext } from '../contexts/AuthContext'
+
+
 import { Auth } from '../components/Auth'
-import { UserProfile } from '../components/UserProfile'
 import { DataManager } from '../components/DataManager'
+import { UserProfile } from '../components/UserProfile'
+import { useAuthContext } from '../contexts/AuthContext'
 
 export function SupabaseDemo() {
   const { user } = useAuthContext()

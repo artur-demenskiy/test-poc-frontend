@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import { PostgrestError } from '@supabase/supabase-js'
+import { useState } from 'react'
+
 import { supabase } from '../lib/supabase'
 import { Tables, Inserts, Updates, Database } from '../types/supabase'
 
@@ -115,7 +116,7 @@ export function useDatabase<T extends keyof Database['public']['Tables']>(table:
     }
   }
 
-  const subscribe = (callback: (payload: any) => void) => {
+  const subscribe = (callback: (payload: unknown) => void) => {
     const subscription = supabase
       .channel(`${table}_changes`)
       .on('postgres_changes', 

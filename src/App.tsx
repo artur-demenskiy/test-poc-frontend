@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import ErrorBoundary from '@/components/ErrorBoundary'
 import Layout from '@/components/Layout'
+import { AuthProvider } from '@/contexts/AuthContext'
 import About from '@/pages/About'
 import Features from '@/pages/Features'
 import Home from '@/pages/Home'
 import NotFound from '@/pages/NotFound'
 import { SupabaseDemo } from '@/pages/SupabaseDemo'
-import { AuthProvider } from '@/contexts/AuthContext'
 import { logger } from '@/utils/logger'
 
 function App(): React.JSX.Element {

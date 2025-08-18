@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
+
 import { useAuthContext } from '../contexts/AuthContext'
+
 import { Auth } from './Auth'
 
 interface ProtectedRouteProps {

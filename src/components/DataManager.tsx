@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+
 import { useDatabase } from '../hooks/useDatabase'
 import { Item } from '../types/supabase'
 
@@ -18,12 +19,13 @@ export function DataManager() {
     
     // Subscribe to real-time changes
     const unsubscribe = subscribe((payload) => {
+      // eslint-disable-next-line no-console
       console.log('Real-time update:', payload)
       fetchData()
     })
 
     return unsubscribe
-  }, [tableName])
+  }, [tableName, fetchData, subscribe])
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault()

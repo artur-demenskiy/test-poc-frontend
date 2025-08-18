@@ -1,5 +1,6 @@
-import { supabase } from '../lib/supabase'
 import { PostgrestError } from '@supabase/supabase-js'
+
+import { supabase } from '../lib/supabase'
 
 // Utility function to handle Supabase errors
 export function handleSupabaseError(error: PostgrestError | null): string | null {
@@ -80,11 +81,11 @@ export function validatePassword(password: string): {
 }
 
 // Utility function to debounce function calls
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout
+  let timeout: ReturnType<typeof setTimeout>
   
   return (...args: Parameters<T>) => {
     clearTimeout(timeout)
@@ -128,7 +129,7 @@ export async function getUserProfile(userId: string) {
 }
 
 // Utility function to update user profile
-export async function updateUserProfile(userId: string, updates: any) {
+export async function updateUserProfile(userId: string, updates: Record<string, unknown>) {
   try {
     const { data, error } = await supabase
       .from('profiles')
@@ -149,7 +150,7 @@ export async function uploadFile(
   bucket: string,
   path: string,
   file: File
-): Promise<{ data: any; error: any }> {
+): Promise<{ data: unknown; error: unknown }> {
   try {
     const { data, error } = await supabase.storage
       .from(bucket)
