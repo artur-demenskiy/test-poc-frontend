@@ -7,6 +7,8 @@ import About from '@/pages/About'
 import Features from '@/pages/Features'
 import Home from '@/pages/Home'
 import NotFound from '@/pages/NotFound'
+import { SupabaseDemo } from '@/pages/SupabaseDemo'
+import { AuthProvider } from '@/contexts/AuthContext'
 import { logger } from '@/utils/logger'
 
 function App(): React.JSX.Element {
@@ -23,16 +25,19 @@ function App(): React.JSX.Element {
         })
       }}
     >
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/features" element={<Features />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/features" element={<Features />} />
+              <Route path="/supabase" element={<SupabaseDemo />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </AuthProvider>
     </ErrorBoundary>
   )
 }
