@@ -12,6 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Features', path: '/features' },
+    { name: 'Supabase', path: '/supabase' },
   ]
 
   return (
