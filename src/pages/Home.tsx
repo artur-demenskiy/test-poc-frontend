@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { ShadcnDemo } from '@/components/ShadcnDemo'
 import { logger } from '@/utils/logger'
 
