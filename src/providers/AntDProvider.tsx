@@ -1,6 +1,6 @@
-import React from 'react';
 import { ConfigProvider, theme } from 'antd';
 import type { ThemeConfig } from 'antd';
+import React from 'react';
 
 // Custom Ant Design theme configuration with best practices
 const customTheme: ThemeConfig = {

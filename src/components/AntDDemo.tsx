@@ -1,4 +1,20 @@
-import React, { useState } from 'react';
+import {
+  UserOutlined,
+  HeartOutlined,
+  StarOutlined,
+  SettingOutlined,
+  PlusOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  SearchOutlined,
+  UploadOutlined,
+  LockOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  TeamOutlined,
+  TrophyOutlined,
+  FireOutlined,
+} from '@ant-design/icons';
 import {
   Button,
   Card,
@@ -34,23 +50,7 @@ import {
   Spin,
   notification,
 } from 'antd';
-import {
-  UserOutlined,
-  HeartOutlined,
-  StarOutlined,
-  SettingOutlined,
-  PlusOutlined,
-  EditOutlined,
-  DeleteOutlined,
-  SearchOutlined,
-  UploadOutlined,
-  LockOutlined,
-  MailOutlined,
-  PhoneOutlined,
-  TeamOutlined,
-  TrophyOutlined,
-  FireOutlined,
-} from '@ant-design/icons';
+import React, { useState } from 'react';
 
 const { Title, Paragraph, Text } = Typography;
 const { Option } = Select;
@@ -91,7 +91,7 @@ const tableColumns = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: (text: string) => <a>{text}</a>,
+    render: (text: string) => <a href="#" onClick={(e) => e.preventDefault()}>{text}</a>,
   },
   {
     title: 'Age',

@@ -1,8 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+import ErrorBoundary from '@/components/ErrorBoundary'
 import Layout from '@/components/Layout'
 import About from '@/pages/About'
-import ErrorBoundary from '@/components/ErrorBoundary'
 import Features from '@/pages/Features'
 import Home from '@/pages/Home'
 import NotFound from '@/pages/NotFound'
