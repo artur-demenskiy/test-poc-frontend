@@ -1,6 +1,6 @@
-import React from 'react';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import React from 'react';
 
 // Create a custom theme with best practices
 const theme = createTheme({

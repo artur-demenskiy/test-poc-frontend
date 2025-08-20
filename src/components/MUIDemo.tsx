@@ -1,4 +1,15 @@
-import React, { useState } from 'react';
+import {
+  Favorite,
+  Star,
+  Settings,
+  Visibility,
+  VisibilityOff,
+  Email,
+  Lock,
+  CheckCircle,
+  Info,
+  Warning,
+} from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -16,18 +27,7 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
-import {
-  Favorite,
-  Star,
-  Settings,
-  Visibility,
-  VisibilityOff,
-  Email,
-  Lock,
-  CheckCircle,
-  Info,
-  Warning,
-} from '@mui/icons-material';
+import React, { useState } from 'react';
 
 export const MUIDemo: React.FC = () => {
   const theme = useTheme();

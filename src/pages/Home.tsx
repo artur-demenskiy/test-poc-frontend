@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { MUIDemo } from '@/components/MUIDemo'
 import { logger } from '@/utils/logger'
 
