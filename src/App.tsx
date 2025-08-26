@@ -7,6 +7,9 @@ import About from '@/pages/About'
 import Features from '@/pages/Features'
 import Home from '@/pages/Home'
 import NotFound from '@/pages/NotFound'
+import { Analytics } from '@/pages/Analytics'
+import { AnalyticsProvider } from '@/contexts/AnalyticsContext'
+import { FeatureFlagsProvider } from '@/contexts/FeatureFlagsContext'
 import { logger } from '@/utils/logger'
 
 function App(): React.JSX.Element {
@@ -23,16 +26,21 @@ function App(): React.JSX.Element {
         })
       }}
     >
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/features" element={<Features />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </Router>
+      <AnalyticsProvider autoInitialize={true}>
+        <FeatureFlagsProvider autoInitialize={true}>
+          <Router>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/features" element={<Features />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Layout>
+          </Router>
+        </FeatureFlagsProvider>
+      </AnalyticsProvider>
     </ErrorBoundary>
   )
 }
