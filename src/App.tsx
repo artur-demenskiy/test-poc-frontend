@@ -7,6 +7,7 @@ import About from '@/pages/About'
 import Features from '@/pages/Features'
 import Home from '@/pages/Home'
 import NotFound from '@/pages/NotFound'
+import Offline from '@/pages/Offline'
 import { logger } from '@/utils/logger'
 
 function App(): React.JSX.Element {
@@ -29,6 +30,7 @@ function App(): React.JSX.Element {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/features" element={<Features />} />
+            <Route path="/offline" element={<Offline />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
