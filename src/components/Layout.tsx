@@ -1,5 +1,7 @@
 import React from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from './LanguageSwitcher'
 
 interface LayoutProps {
   children?: React.ReactNode
@@ -7,11 +9,13 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation()
+  const { t } = useTranslation()
 
   const navigation = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Features', path: '/features' },
+    { name: t('navigation.home'), path: '/' },
+    { name: t('navigation.about'), path: '/about' },
+    { name: t('navigation.features'), path: '/features' },
+    { name: t('navigation.language'), path: '/language' },
   ]
 
   return (
@@ -22,10 +26,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <h1 className="text-xl font-semibold text-gray-900">
-                React Boilerplate
+                {t('home.title')}
               </h1>
             </div>
-            <nav className="flex space-x-8">
+            <nav className="flex items-center space-x-8">
               {navigation.map((item) => (
                 <Link
                   key={item.path}
@@ -39,6 +43,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Language Switcher */}
+              <div className="ml-4">
+                <LanguageSwitcher />
+              </div>
             </nav>
           </div>
         </div>
@@ -52,10 +61,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 mt-auto">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-sm text-gray-500">
-            <p>React TypeScript Boilerplate - Production Ready</p>
-            <p className="mt-1">Built with Vite, Tailwind CSS, and modern tooling</p>
-          </div>
+                  <div className="text-center text-sm text-gray-500">
+          <p>{t('home.title')} - {t('common.productionReady')}</p>
+          <p className="mt-1">{t('home.features.fastDevelopment.description')}</p>
+        </div>
         </div>
       </footer>
     </div>

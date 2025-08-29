@@ -1,0 +1,424 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "submit": "Soumettre",
+    "reset": "Réinitialiser",
+    "confirm": "Confirmer",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "retry": "Réessayer",
+    "refresh": "Actualiser",
+    "download": "Télécharger",
+    "upload": "Téléverser",
+    "copy": "Copier",
+    "paste": "Coller",
+    "cut": "Couper",
+    "select": "Sélectionner",
+    "deselect": "Désélectionner",
+    "selectAll": "Tout sélectionner",
+    "clear": "Effacer",
+    "apply": "Appliquer",
+    "done": "Terminé",
+    "settings": "Paramètres",
+    "preferences": "Préférences",
+    "help": "Aide",
+    "about": "À propos",
+    "contact": "Contact",
+    "support": "Support",
+    "feedback": "Retour",
+    "report": "Signaler",
+    "share": "Partager",
+    "print": "Imprimer",
+    "export": "Exporter",
+    "import": "Importer",
+    "sync": "Synchroniser",
+    "offline": "Hors ligne",
+    "online": "En ligne"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "about": "À propos",
+    "offline": "Hors ligne et PWA",
+    "language": "Langue",
+    "profile": "Profil",
+    "dashboard": "Tableau de bord",
+    "settings": "Paramètres",
+    "logout": "Se déconnecter",
+    "login": "Se connecter",
+    "register": "S'inscrire",
+    "menu": "Menu",
+    "sidebar": "Barre latérale",
+    "breadcrumb": "Fil d'Ariane"
+  },
+  "home": {
+    "title": "Modèle React TypeScript",
+    "subtitle": "Un modèle d'application React prêt pour la production avec des outils modernes, des tests complets et une configuration de build optimisée.",
+    "features": {
+      "fastDevelopment": {
+        "title": "Développement Rapide",
+        "description": "Vite + React SWC pour des builds ultra-rapides et un remplacement de modules à chaud."
+      },
+      "typeSafety": {
+        "title": "Sécurité des Types",
+        "description": "Mode strict TypeScript avec vérification complète des types et validation."
+      },
+      "modernStyling": {
+        "title": "Style Moderne",
+        "description": "Tailwind CSS avec approche utility-first et design responsive."
+      },
+      "testing": {
+        "title": "Tests",
+        "description": "Vitest + React Testing Library pour des tests unitaires et d'intégration complets."
+      },
+      "codeQuality": {
+        "title": "Qualité du Code",
+        "description": "ESLint + Prettier pour un formatage de code cohérent et la qualité."
+      },
+      "errorHandling": {
+        "title": "Gestion des Erreurs",
+        "description": "Composant ErrorBoundary avec journalisation complète et rapports d'erreurs."
+      }
+    },
+    "gettingStarted": {
+      "title": "Commencer",
+      "description": "Ce modèle est prêt pour le développement. Commencez à construire votre application :",
+      "steps": [
+        "Ajoutant de nouveaux composants dans le dossier src/components",
+        "Créant de nouvelles pages dans le dossier src/pages",
+        "Définissant des types dans le dossier src/types",
+        "Ajoutant des utilitaires dans le dossier src/utils",
+        "Configurant des routes supplémentaires dans la configuration du routeur",
+        "Ajoutant la gestion d'état selon les besoins"
+      ]
+    }
+  },
+  "features": {
+    "title": "Fonctionnalités",
+    "subtitle": "Découvrez les fonctionnalités puissantes de notre modèle React TypeScript",
+    "featureList": {
+      "react19": {
+        "title": "React 19",
+        "description": "Dernières fonctionnalités React avec rendu concurrent et performances améliorées"
+      },
+      "typescript": {
+        "title": "TypeScript 5.8",
+        "description": "Système de types avancé avec mode strict et vérification complète des types"
+      },
+      "vite": {
+        "title": "Build Vite",
+        "description": "Outil de build ultra-rapide avec remplacement instantané de modules à chaud"
+      },
+      "tailwind": {
+        "title": "Tailwind CSS",
+        "description": "Framework CSS utility-first pour le développement rapide d'interface"
+      },
+      "testing": {
+        "title": "Tests Complets",
+        "description": "Vitest pour les tests unitaires et Cypress pour les tests E2E"
+      },
+      "pwa": {
+        "title": "Support PWA",
+        "description": "Fonctionnalités Progressive Web App avec architecture offline-first"
+      },
+      "docker": {
+        "title": "Prêt pour Docker",
+        "description": "Configuration Docker prête pour la production avec Nginx"
+      },
+      "ci": {
+        "title": "Pipeline CI/CD",
+        "description": "Workflow GitHub Actions pour les tests et déploiements automatisés"
+      }
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "subtitle": "En savoir plus sur notre projet de modèle React TypeScript",
+    "description": "Ceci est un modèle d'application React complet conçu pour fournir aux développeurs une base solide pour construire des applications web modernes. Il inclut tous les outils et configurations essentiels nécessaires au développement de production.",
+    "techStack": {
+      "title": "Stack Technologique",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "testing": "Tests",
+      "build": "Outils de build",
+      "deployment": "Déploiement"
+    },
+    "contributing": {
+      "title": "Contribuer",
+      "description": "Nous accueillons les contributions de la communauté. Veuillez lire nos directives de contribution et soumettre des pull requests.",
+      "steps": [
+        "Forker le dépôt",
+        "Créer une branche de fonctionnalité",
+        "Apporter vos modifications",
+        "Ajouter des tests pour la nouvelle fonctionnalité",
+        "S'assurer que tous les tests passent",
+        "Soumettre une pull request"
+      ]
+    }
+  },
+  "offline": {
+    "title": "Fonctionnalités Hors Ligne et PWA",
+    "subtitle": "Découvrez l'avenir des applications web avec des capacités hors ligne intelligentes, des fonctionnalités d'application web progressive et une expérience utilisateur fluide indépendamment des conditions réseau.",
+    "features": {
+      "pwa": {
+        "title": "Application Web Progressive",
+        "description": "Application installable avec expérience native, mode autonome et mises à jour automatiques."
+      },
+      "offlineFirst": {
+        "title": "Hors Ligne en Premier",
+        "description": "Stratégies de cache intelligentes avec fallbacks automatiques et expérience hors ligne fluide."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Chargement optimisé, cache intelligent et navigation instantanée pour une meilleure expérience utilisateur."
+      }
+    },
+    "demo": {
+      "title": "Démo Hors Ligne en Premier",
+      "subtitle": "Découvrez la puissance de la fonctionnalité hors ligne en premier avec cache intelligent et fallbacks",
+      "networkStatus": {
+        "online": "🟢 En ligne - Fonctionnalité complète disponible",
+        "offline": "🔴 Hors ligne - Utilisation des données en cache"
+      },
+      "autoFetch": {
+        "title": "🔄 Récupération automatique de données hors ligne en premier",
+        "fetchButton": "Récupérer des données fraîches",
+        "fetching": "Récupération...",
+        "fromCache": "📱 Depuis le cache",
+        "fromNetwork": "🌐 Depuis le réseau",
+        "currentData": "Données actuelles :",
+        "noData": "Aucune donnée pour le moment",
+        "tip": "💡 Ces données sont automatiquement mises en cache et utilisent le cache en mode hors ligne"
+      },
+      "manualCache": {
+        "title": "🗄️ Gestion manuelle du cache",
+        "cacheKey": "Clé de cache",
+        "cacheData": "Données de cache",
+        "ttl": "TTL (millisecondes)",
+        "cacheButton": "Mettre en cache",
+        "checkButton": "Vérifier le cache",
+        "cacheStatus": "Statut du cache",
+        "totalItems": "Total d'éléments :",
+        "maxCapacity": "Capacité maximale :",
+        "memoryUsage": "Utilisation mémoire :",
+        "quickActions": "Actions rapides",
+        "preloadButton": "Précharger des données d'exemple",
+        "checkStatusButton": "Vérifier le statut de la clé"
+      },
+      "offlineFeatures": {
+        "title": "📱 Fonctionnalités hors ligne",
+        "available": "✅ Disponible hors ligne",
+        "limited": "⚠️ Limité hors ligne",
+        "availableItems": [
+          "Accès aux données en cache",
+          "Navigation de l'application",
+          "Interactions d'interface",
+          "Saisie de formulaires (sauvegardée localement)",
+          "Fonctionnalité de base"
+        ],
+        "limitedItems": [
+          "Mises à jour de données en temps réel",
+          "Appels API",
+          "Ressources externes",
+          "Notifications en direct"
+        ],
+        "syncMessage": "🔄 Synchroniser quand en ligne",
+        "syncDescription": "Toute modification effectuée hors ligne sera automatiquement synchronisée lorsque vous serez de nouveau en ligne."
+      },
+      "technicalDetails": {
+        "title": "🔧 Implémentation technique",
+        "serviceWorker": "Service Worker : Gère les stratégies de cache, les fallbacks hors ligne et les mises à jour de l'application",
+        "cacheApi": "Cache API : Stocke les données avec TTL, nettoyage automatique et fallback localStorage",
+        "networkDetection": "Détection réseau : Surveillance en temps réel du statut en ligne/hors ligne",
+        "intelligentFallbacks": "Fallbacks intelligents : Transition automatique vers les données en cache en mode hors ligne",
+        "pwaFeatures": "Fonctionnalités PWA : Application installable, mode autonome et architecture hors ligne en premier"
+      }
+    },
+    "howItWorks": {
+      "title": "💡 Comment ça fonctionne",
+      "steps": [
+        "Le Service Worker met en cache les ressources de l'application et les réponses API",
+        "En mode hors ligne, l'application utilise automatiquement les données en cache",
+        "Les modifications sont mises en file d'attente et synchronisées lors du retour en ligne",
+        "L'application se met à jour automatiquement en arrière-plan"
+      ]
+    },
+    "browserSupport": {
+      "title": "🌐 Support des navigateurs",
+      "chrome": "Chrome/Edge :",
+      "firefox": "Firefox :",
+      "safari": "Safari :",
+      "mobile": "Mobile :",
+      "fullSupport": "✓ Support complet",
+      "limited": "⚠️ Limité"
+    },
+    "development": {
+      "title": "🛠️ Développement",
+      "tips": [
+        "Utilisez l'onglet Application dans Chrome DevTools pour inspecter le Service Worker",
+        "Testez le mode hors ligne dans l'onglet Network",
+        "Surveillez le stockage du cache et le cycle de vie du Service Worker",
+        "Utilisez Lighthouse pour l'audit PWA"
+      ]
+    }
+  },
+  "language": {
+    "title": "Paramètres de langue",
+    "subtitle": "Choisissez votre langue préférée pour l'application",
+    "currentLanguage": "Langue actuelle",
+    "selectLanguage": "Sélectionner la langue",
+    "languageChanged": "Langue changée avec succès",
+    "languageChangeError": "Erreur lors du changement de langue",
+    "autoDetect": "Détection automatique",
+    "preferredLanguage": "Langue préférée",
+    "systemLanguage": "Langue du système",
+    "rtlSupport": "Support de droite à gauche",
+    "rtlDescription": "Cette langue s'affiche de droite à gauche",
+    "ltrDescription": "Cette langue s'affiche de gauche à droite"
+  },
+  "errors": {
+    "general": "Quelque chose s'est mal passé",
+    "network": "Une erreur réseau s'est produite",
+    "notFound": "Page non trouvée",
+    "unauthorized": "Accès non autorisé",
+    "forbidden": "Accès interdit",
+    "serverError": "Une erreur serveur s'est produite",
+    "timeout": "Délai d'attente dépassé",
+    "offline": "Vous êtes actuellement hors ligne",
+    "retry": "Veuillez réessayer",
+    "contactSupport": "Veuillez contacter le support si le problème persiste"
+  },
+  "validation": {
+    "required": "Ce champ est requis",
+    "email": "Veuillez saisir une adresse e-mail valide",
+    "minLength": "La longueur minimale est de {{min}} caractères",
+    "maxLength": "La longueur maximale est de {{max}} caractères",
+    "password": "Le mot de passe doit contenir au moins 8 caractères",
+    "passwordMatch": "Les mots de passe doivent correspondre",
+    "invalidFormat": "Format invalide",
+    "numberRange": "La valeur doit être comprise entre {{min}} et {{max}}",
+    "url": "Veuillez saisir une URL valide"
+  },
+  "notifications": {
+    "success": "Succès",
+    "error": "Erreur",
+    "warning": "Avertissement",
+    "info": "Information",
+    "dismiss": "Rejeter",
+    "dismissAll": "Tout rejeter",
+    "markAsRead": "Marquer comme lu",
+    "markAllAsRead": "Tout marquer comme lu"
+  },
+  "time": {
+    "now": "Maintenant",
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "tomorrow": "Demain",
+    "thisWeek": "Cette semaine",
+    "lastWeek": "La semaine dernière",
+    "nextWeek": "La semaine prochaine",
+    "thisMonth": "Ce mois",
+    "lastMonth": "Le mois dernier",
+    "nextMonth": "Le mois prochain",
+    "thisYear": "Cette année",
+    "lastYear": "L'année dernière",
+    "nextYear": "L'année prochaine",
+    "ago": "il y a {{time}}",
+    "in": "dans {{time}}",
+    "seconds": "{{count}} seconde",
+    "seconds_plural": "{{count}} secondes",
+    "minutes": "{{count}} minute",
+    "minutes_plural": "{{count}} minutes",
+    "hours": "{{count}} heure",
+    "hours_plural": "{{count}} heures",
+    "days": "{{count}} jour",
+    "days_plural": "{{count}} jours",
+    "weeks": "{{count}} semaine",
+    "weeks_plural": "{{count}} semaines",
+    "months": "{{count}} mois",
+    "months_plural": "{{count}} mois",
+    "years": "{{count}} an",
+    "years_plural": "{{count}} ans"
+  },
+  "date": {
+    "format": "DD/MM/YYYY",
+    "shortFormat": "DD/MM/YY",
+    "longFormat": "DD MMMM YYYY",
+    "timeFormat": "HH:mm",
+    "dateTimeFormat": "DD/MM/YYYY HH:mm",
+    "months": {
+      "january": "Janvier",
+      "february": "Février",
+      "march": "Mars",
+      "april": "Avril",
+      "may": "Mai",
+      "june": "Juin",
+      "july": "Juillet",
+      "august": "Août",
+      "september": "Septembre",
+      "october": "Octobre",
+      "november": "Novembre",
+      "december": "Décembre"
+    },
+    "shortMonths": {
+      "jan": "Jan",
+      "feb": "Fév",
+      "mar": "Mar",
+      "apr": "Avr",
+      "may": "Mai",
+      "jun": "Juin",
+      "jul": "Juil",
+      "aug": "Août",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Déc"
+    },
+    "weekdays": {
+      "monday": "Lundi",
+      "tuesday": "Mardi",
+      "wednesday": "Mercredi",
+      "thursday": "Jeudi",
+      "friday": "Vendredi",
+      "saturday": "Samedi",
+      "sunday": "Dimanche"
+    },
+    "shortWeekdays": {
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mer",
+      "thu": "Jeu",
+      "fri": "Ven",
+      "sat": "Sam",
+      "sun": "Dim"
+    }
+  },
+  "numbers": {
+    "decimal": ",",
+    "thousands": " ",
+    "currency": {
+      "symbol": "€",
+      "position": "after",
+      "decimals": 2
+    },
+    "percentage": {
+      "symbol": "%",
+      "decimals": 2
+    }
+  }
+} 
