@@ -1,8 +1,11 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { logger } from '@/utils/logger'
 
 const Home: React.FC = () => {
+  const { t } = useTranslation()
+  
   React.useEffect(() => {
     logger.info('Home page mounted')
   }, [])
@@ -12,11 +15,10 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <div className="text-center">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          React TypeScript Boilerplate
+          {t('home.title')}
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          A production-ready React application template with modern tooling, 
-          comprehensive testing, and optimized build configuration.
+          {t('home.subtitle')}
         </p>
       </div>
 
@@ -29,10 +31,10 @@ const Home: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 ml-3">Fast Development</h3>
+            <h3 className="text-lg font-semibold text-gray-900 ml-3">{t('home.features.fastDevelopment.title')}</h3>
           </div>
           <p className="text-gray-600">
-            Vite + React SWC for lightning-fast builds and hot module replacement.
+            {t('home.features.fastDevelopment.description')}
           </p>
         </div>
 
@@ -43,10 +45,10 @@ const Home: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 ml-3">Type Safety</h3>
+            <h3 className="text-lg font-semibold text-gray-900 ml-3">{t('home.features.typeSafety.title')}</h3>
           </div>
           <p className="text-gray-600">
-            TypeScript strict mode with comprehensive type checking and validation.
+            {t('home.features.typeSafety.description')}
           </p>
         </div>
 
@@ -57,10 +59,10 @@ const Home: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 ml-3">Modern Styling</h3>
+            <h3 className="text-lg font-semibold text-gray-900 ml-3">{t('home.features.modernStyling.title')}</h3>
           </div>
           <p className="text-gray-600">
-            Tailwind CSS with utility-first approach and responsive design.
+            {t('home.features.modernStyling.description')}
           </p>
         </div>
 
@@ -71,10 +73,10 @@ const Home: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 ml-3">Testing</h3>
+            <h3 className="text-lg font-semibold text-gray-900 ml-3">{t('home.features.testing.title')}</h3>
           </div>
           <p className="text-gray-600">
-            Vitest + React Testing Library for comprehensive unit and integration tests.
+            {t('home.features.testing.description')}
           </p>
         </div>
 
@@ -86,10 +88,10 @@ const Home: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 ml-3">Code Quality</h3>
+            <h3 className="text-lg font-semibold text-gray-900 ml-3">{t('home.features.codeQuality.title')}</h3>
           </div>
           <p className="text-gray-600">
-            ESLint + Prettier for consistent code formatting and quality.
+            {t('home.features.codeQuality.description')}
           </p>
         </div>
 
@@ -100,10 +102,10 @@ const Home: React.FC = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 ml-3">Error Handling</h3>
+            <h3 className="text-lg font-semibold text-gray-900 ml-3">{t('home.features.errorHandling.title')}</h3>
           </div>
           <p className="text-gray-600">
-            ErrorBoundary component with comprehensive logging and error reporting.
+            {t('home.features.errorHandling.description')}
           </p>
         </div>
       </div>
@@ -111,19 +113,16 @@ const Home: React.FC = () => {
       {/* Getting Started */}
       <div className="card">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Getting Started
+          {t('home.gettingStarted.title')}
         </h2>
         <div className="space-y-4 text-gray-600">
           <p>
-            This boilerplate is ready for development. Start building your application by:
+            {t('home.gettingStarted.description')}
           </p>
           <ol className="list-decimal list-inside space-y-2 ml-4">
-            <li>Adding new components in the <code className="bg-gray-100 px-1 rounded">src/components</code> folder</li>
-            <li>Creating new pages in the <code className="bg-gray-100 px-1 rounded">src/pages</code> folder</li>
-            <li>Defining types in the <code className="bg-gray-100 px-1 rounded">src/types</code> folder</li>
-            <li>Adding utilities in the <code className="bg-gray-100 px-1 rounded">src/utils</code> folder</li>
-            <li>Setting up additional routes in the router configuration</li>
-            <li>Adding state management as needed</li>
+            {t('home.gettingStarted.steps', { returnObjects: true }).map((step: string, index: number) => (
+              <li key={index}>{step}</li>
+            ))}
           </ol>
         </div>
       </div>

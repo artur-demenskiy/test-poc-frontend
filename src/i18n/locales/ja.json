@@ -1,0 +1,424 @@
+{
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "delete": "削除",
+    "edit": "編集",
+    "add": "追加",
+    "search": "検索",
+    "filter": "フィルター",
+    "sort": "並び替え",
+    "close": "閉じる",
+    "back": "戻る",
+    "next": "次へ",
+    "previous": "前へ",
+    "submit": "送信",
+    "reset": "リセット",
+    "confirm": "確認",
+    "yes": "はい",
+    "no": "いいえ",
+    "ok": "OK",
+    "retry": "再試行",
+    "refresh": "更新",
+    "download": "ダウンロード",
+    "upload": "アップロード",
+    "copy": "コピー",
+    "paste": "貼り付け",
+    "cut": "切り取り",
+    "select": "選択",
+    "deselect": "選択解除",
+    "selectAll": "すべて選択",
+    "clear": "クリア",
+    "apply": "適用",
+    "done": "完了",
+    "settings": "設定",
+    "preferences": "設定",
+    "help": "ヘルプ",
+    "about": "について",
+    "contact": "お問い合わせ",
+    "support": "サポート",
+    "feedback": "フィードバック",
+    "report": "報告",
+    "share": "共有",
+    "print": "印刷",
+    "export": "エクスポート",
+    "import": "インポート",
+    "sync": "同期",
+    "offline": "オフライン",
+    "online": "オンライン"
+  },
+  "navigation": {
+    "home": "ホーム",
+    "features": "機能",
+    "about": "について",
+    "offline": "オフラインとPWA",
+    "language": "言語",
+    "profile": "プロフィール",
+    "dashboard": "ダッシュボード",
+    "settings": "設定",
+    "logout": "ログアウト",
+    "login": "ログイン",
+    "register": "登録",
+    "menu": "メニュー",
+    "sidebar": "サイドバー",
+    "breadcrumb": "パンくずリスト"
+  },
+  "home": {
+    "title": "React TypeScript ボイラープレート",
+    "subtitle": "モダンなツール、包括的なテスト、最適化されたビルド設定を備えた本格的なReactアプリケーションテンプレート。",
+    "features": {
+      "fastDevelopment": {
+        "title": "高速開発",
+        "description": "Vite + React SWCによる高速ビルドとホットモジュール置換。"
+      },
+      "typeSafety": {
+        "title": "型安全性",
+        "description": "TypeScript strict modeによる包括的な型チェックとバリデーション。"
+      },
+      "modernStyling": {
+        "title": "モダンスタイリング",
+        "description": "ユーティリティファーストアプローチとレスポンシブデザインを備えたTailwind CSS。"
+      },
+      "testing": {
+        "title": "テスト",
+        "description": "包括的なユニットテストと統合テストのためのVitest + React Testing Library。"
+      },
+      "codeQuality": {
+        "title": "コード品質",
+        "description": "一貫したコードフォーマットと品質のためのESLint + Prettier。"
+      },
+      "errorHandling": {
+        "title": "エラーハンドリング",
+        "description": "包括的なログ記録とエラー報告を備えたErrorBoundaryコンポーネント。"
+      }
+    },
+    "gettingStarted": {
+      "title": "はじめに",
+      "description": "このボイラープレートは開発の準備ができています。以下の方法でアプリケーションの構築を開始してください：",
+      "steps": [
+        "src/componentsフォルダに新しいコンポーネントを追加",
+        "src/pagesフォルダに新しいページを作成",
+        "src/typesフォルダで型を定義",
+        "src/utilsフォルダにユーティリティを追加",
+        "ルーター設定で追加のルートを設定",
+        "必要に応じて状態管理を追加"
+      ]
+    }
+  },
+  "features": {
+    "title": "機能",
+    "subtitle": "React TypeScriptボイラープレートの強力な機能を発見してください",
+    "featureList": {
+      "react19": {
+        "title": "React 19",
+        "description": "コンカレントレンダリングと改善されたパフォーマンスを備えた最新のReact機能"
+      },
+      "typescript": {
+        "title": "TypeScript 5.8",
+        "description": "strict modeと包括的な型チェックを備えた高度な型システム"
+      },
+      "vite": {
+        "title": "Viteビルド",
+        "description": "インスタントホットモジュール置換を備えた超高速ビルドツール"
+      },
+      "tailwind": {
+        "title": "Tailwind CSS",
+        "description": "高速UI開発のためのユーティリティファーストCSSフレームワーク"
+      },
+      "testing": {
+        "title": "包括的なテスト",
+        "description": "ユニットテスト用のVitestとE2Eテスト用のCypress"
+      },
+      "pwa": {
+        "title": "PWAサポート",
+        "description": "オフラインファーストアーキテクチャを備えたProgressive Web App機能"
+      },
+      "docker": {
+        "title": "Docker対応",
+        "description": "Nginxを使用した本格的なDocker設定"
+      },
+      "ci": {
+        "title": "CI/CDパイプライン",
+        "description": "自動化されたテストとデプロイメントのためのGitHub Actionsワークフロー"
+      }
+    }
+  },
+  "about": {
+    "title": "について",
+    "subtitle": "React TypeScriptボイラープレートプロジェクトについて詳しく学ぶ",
+    "description": "これは、開発者がモダンなWebアプリケーションを構築するための堅実な基盤を提供するために設計された包括的なReactアプリケーションテンプレートです。本格的な開発に必要なすべての重要なツールと設定が含まれています。",
+    "techStack": {
+      "title": "技術スタック",
+      "frontend": "フロントエンド",
+      "backend": "バックエンド",
+      "testing": "テスト",
+      "build": "ビルドツール",
+      "deployment": "デプロイメント"
+    },
+    "contributing": {
+      "title": "貢献",
+      "description": "コミュニティからの貢献を歓迎します。貢献ガイドラインをお読みになり、プルリクエストを送信してください。",
+      "steps": [
+        "リポジトリをフォーク",
+        "機能ブランチを作成",
+        "変更を行う",
+        "新機能のテストを追加",
+        "すべてのテストが通ることを確認",
+        "プルリクエストを送信"
+      ]
+    }
+  },
+  "offline": {
+    "title": "オフラインファーストとPWA機能",
+    "subtitle": "インテリジェントなオフライン機能、Progressive Web App機能、ネットワーク条件に関係なくシームレスなユーザーエクスペリエンスを備えたWebアプリケーションの未来を体験してください。",
+    "features": {
+      "pwa": {
+        "title": "Progressive Web App",
+        "description": "ネイティブライクなエクスペリエンス、スタンドアロンモード、自動更新を備えたインストール可能なアプリ。"
+      },
+      "offlineFirst": {
+        "title": "オフラインファースト",
+        "description": "自動フォールバックとシームレスなオフラインエクスペリエンスを備えたインテリジェントなキャッシュ戦略。"
+      },
+      "performance": {
+        "title": "パフォーマンス",
+        "description": "最適化された読み込み、スマートキャッシュ、より良いユーザーエクスペリエンスのためのインスタントナビゲーション。"
+      }
+    },
+    "demo": {
+      "title": "オフラインファーストデモ",
+      "subtitle": "インテリジェントなキャッシュとフォールバックを備えたオフラインファースト機能の力を体験してください",
+      "networkStatus": {
+        "online": "🟢 オンライン - 完全な機能が利用可能",
+        "offline": "🔴 オフライン - キャッシュされたデータを使用"
+      },
+      "autoFetch": {
+        "title": "🔄 自動オフラインファーストデータ取得",
+        "fetchButton": "新しいデータを取得",
+        "fetching": "取得中...",
+        "fromCache": "📱 キャッシュから",
+        "fromNetwork": "🌐 ネットワークから",
+        "currentData": "現在のデータ：",
+        "noData": "まだデータがありません",
+        "tip": "💡 このデータは自動的にキャッシュされ、オフライン時にキャッシュを使用します"
+      },
+      "manualCache": {
+        "title": "🗄️ 手動キャッシュ管理",
+        "cacheKey": "キャッシュキー",
+        "cacheData": "キャッシュデータ",
+        "ttl": "TTL（ミリ秒）",
+        "cacheButton": "データをキャッシュ",
+        "checkButton": "キャッシュをチェック",
+        "cacheStatus": "キャッシュステータス",
+        "totalItems": "総アイテム数：",
+        "maxCapacity": "最大容量：",
+        "memoryUsage": "メモリ使用量：",
+        "quickActions": "クイックアクション",
+        "preloadButton": "サンプルデータをプリロード",
+        "checkStatusButton": "キーステータスをチェック"
+      },
+      "offlineFeatures": {
+        "title": "📱 オフライン機能",
+        "available": "✅ オフラインで利用可能",
+        "limited": "⚠️ オフラインで制限",
+        "availableItems": [
+          "キャッシュされたデータへのアクセス",
+          "アプリナビゲーション",
+          "UIインタラクション",
+          "フォーム入力（ローカルに保存）",
+          "基本機能"
+        ],
+        "limitedItems": [
+          "リアルタイムデータ更新",
+          "API呼び出し",
+          "外部リソース",
+          "ライブ通知"
+        ],
+        "syncMessage": "🔄 オンライン時に同期",
+        "syncDescription": "オフラインで行われた変更は、オンラインに戻ったときに自動的に同期されます。"
+      },
+      "technicalDetails": {
+        "title": "🔧 技術的実装",
+        "serviceWorker": "Service Worker：キャッシュ戦略、オフラインフォールバック、アプリ更新を管理",
+        "cacheApi": "Cache API：TTL、自動クリーンアップ、localStorageフォールバックでデータを保存",
+        "networkDetection": "ネットワーク検出：オンライン/オフラインステータスのリアルタイム監視",
+        "intelligentFallbacks": "インテリジェントフォールバック：オフライン時のキャッシュデータへの自動フォールバック",
+        "pwaFeatures": "PWA機能：インストール可能なアプリ、スタンドアロンモード、オフラインファーストアーキテクチャ"
+      }
+    },
+    "howItWorks": {
+      "title": "💡 動作の仕組み",
+      "steps": [
+        "Service WorkerがアプリリソースとAPIレスポンスをキャッシュ",
+        "オフライン時、アプリは自動的にキャッシュされたデータを使用",
+        "変更はキューに入れられ、再接続時に同期",
+        "アプリはバックグラウンドで自動更新"
+      ]
+    },
+    "browserSupport": {
+      "title": "🌐 ブラウザサポート",
+      "chrome": "Chrome/Edge：",
+      "firefox": "Firefox：",
+      "safari": "Safari：",
+      "mobile": "モバイル：",
+      "fullSupport": "✓ 完全サポート",
+      "limited": "⚠️ 制限付き"
+    },
+    "development": {
+      "title": "🛠️ 開発",
+      "tips": [
+        "Chrome DevToolsのApplicationタブを使用してService Workerを検査",
+        "Networkタブでオフラインモードをテスト",
+        "キャッシュストレージとService Workerライフサイクルを監視",
+        "PWA監査にLighthouseを使用"
+      ]
+    }
+  },
+  "language": {
+    "title": "言語設定",
+    "subtitle": "アプリケーションの優先言語を選択してください",
+    "currentLanguage": "現在の言語",
+    "selectLanguage": "言語を選択",
+    "languageChanged": "言語が正常に変更されました",
+    "languageChangeError": "言語変更エラー",
+    "autoDetect": "自動検出",
+    "preferredLanguage": "優先言語",
+    "systemLanguage": "システム言語",
+    "rtlSupport": "右から左へのサポート",
+    "rtlDescription": "この言語は右から左に表示されます",
+    "ltrDescription": "この言語は左から右に表示されます"
+  },
+  "errors": {
+    "general": "何か問題が発生しました",
+    "network": "ネットワークエラーが発生しました",
+    "notFound": "ページが見つかりません",
+    "unauthorized": "認証されていないアクセス",
+    "forbidden": "アクセスが禁止されています",
+    "serverError": "サーバーエラーが発生しました",
+    "timeout": "リクエストタイムアウト",
+    "offline": "現在オフラインです",
+    "retry": "もう一度お試しください",
+    "contactSupport": "問題が続く場合はサポートにお問い合わせください"
+  },
+  "validation": {
+    "required": "このフィールドは必須です",
+    "email": "有効なメールアドレスを入力してください",
+    "minLength": "最小長は{{min}}文字です",
+    "maxLength": "最大長は{{max}}文字です",
+    "password": "パスワードは8文字以上である必要があります",
+    "passwordMatch": "パスワードが一致する必要があります",
+    "invalidFormat": "無効な形式",
+    "numberRange": "値は{{min}}と{{max}}の間である必要があります",
+    "url": "有効なURLを入力してください"
+  },
+  "notifications": {
+    "success": "成功",
+    "error": "エラー",
+    "warning": "警告",
+    "info": "情報",
+    "dismiss": "閉じる",
+    "dismissAll": "すべて閉じる",
+    "markAsRead": "既読にする",
+    "markAllAsRead": "すべて既読にする"
+  },
+  "time": {
+    "now": "今",
+    "today": "今日",
+    "yesterday": "昨日",
+    "tomorrow": "明日",
+    "thisWeek": "今週",
+    "lastWeek": "先週",
+    "nextWeek": "来週",
+    "thisMonth": "今月",
+    "lastMonth": "先月",
+    "nextMonth": "来月",
+    "thisYear": "今年",
+    "lastYear": "去年",
+    "nextYear": "来年",
+    "ago": "{{time}}前",
+    "in": "{{time}}後",
+    "seconds": "{{count}}秒",
+    "seconds_plural": "{{count}}秒",
+    "minutes": "{{count}}分",
+    "minutes_plural": "{{count}}分",
+    "hours": "{{count}}時間",
+    "hours_plural": "{{count}}時間",
+    "days": "{{count}}日",
+    "days_plural": "{{count}}日",
+    "weeks": "{{count}}週間",
+    "weeks_plural": "{{count}}週間",
+    "months": "{{count}}ヶ月",
+    "months_plural": "{{count}}ヶ月",
+    "years": "{{count}}年",
+    "years_plural": "{{count}}年"
+  },
+  "date": {
+    "format": "YYYY/MM/DD",
+    "shortFormat": "YY/MM/DD",
+    "longFormat": "YYYY年MM月DD日",
+    "timeFormat": "HH:mm",
+    "dateTimeFormat": "YYYY/MM/DD HH:mm",
+    "months": {
+      "january": "1月",
+      "february": "2月",
+      "march": "3月",
+      "april": "4月",
+      "may": "5月",
+      "june": "6月",
+      "july": "7月",
+      "august": "8月",
+      "september": "9月",
+      "october": "10月",
+      "november": "11月",
+      "december": "12月"
+    },
+    "shortMonths": {
+      "jan": "1月",
+      "feb": "2月",
+      "mar": "3月",
+      "apr": "4月",
+      "may": "5月",
+      "jun": "6月",
+      "jul": "7月",
+      "aug": "8月",
+      "sep": "9月",
+      "oct": "10月",
+      "nov": "11月",
+      "dec": "12月"
+    },
+    "weekdays": {
+      "monday": "月曜日",
+      "tuesday": "火曜日",
+      "wednesday": "水曜日",
+      "thursday": "木曜日",
+      "friday": "金曜日",
+      "saturday": "土曜日",
+      "sunday": "日曜日"
+    },
+    "shortWeekdays": {
+      "mon": "月",
+      "tue": "火",
+      "wed": "水",
+      "thu": "木",
+      "fri": "金",
+      "sat": "土",
+      "sun": "日"
+    }
+  },
+  "numbers": {
+    "decimal": ".",
+    "thousands": ",",
+    "currency": {
+      "symbol": "¥",
+      "position": "before",
+      "decimals": 0
+    },
+    "percentage": {
+      "symbol": "%",
+      "decimals": 2
+    }
+  }
+} 

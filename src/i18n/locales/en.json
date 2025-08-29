@@ -1,0 +1,424 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "reset": "Reset",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "retry": "Retry",
+    "refresh": "Refresh",
+    "download": "Download",
+    "upload": "Upload",
+    "copy": "Copy",
+    "paste": "Paste",
+    "cut": "Cut",
+    "select": "Select",
+    "deselect": "Deselect",
+    "selectAll": "Select All",
+    "clear": "Clear",
+    "apply": "Apply",
+    "done": "Done",
+    "settings": "Settings",
+    "preferences": "Preferences",
+    "help": "Help",
+    "about": "About",
+    "contact": "Contact",
+    "support": "Support",
+    "feedback": "Feedback",
+    "report": "Report",
+    "share": "Share",
+    "print": "Print",
+    "export": "Export",
+    "import": "Import",
+    "sync": "Sync",
+    "offline": "Offline",
+    "online": "Online"
+  },
+  "navigation": {
+    "home": "Home",
+    "features": "Features",
+    "about": "About",
+    "offline": "Offline & PWA",
+    "language": "Language",
+    "profile": "Profile",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "menu": "Menu",
+    "sidebar": "Sidebar",
+    "breadcrumb": "Breadcrumb"
+  },
+  "home": {
+    "title": "React TypeScript Boilerplate",
+    "subtitle": "A production-ready React application template with modern tooling, comprehensive testing, and optimized build configuration.",
+    "features": {
+      "fastDevelopment": {
+        "title": "Fast Development",
+        "description": "Vite + React SWC for lightning-fast builds and hot module replacement."
+      },
+      "typeSafety": {
+        "title": "Type Safety",
+        "description": "TypeScript strict mode with comprehensive type checking and validation."
+      },
+      "modernStyling": {
+        "title": "Modern Styling",
+        "description": "Tailwind CSS with utility-first approach and responsive design."
+      },
+      "testing": {
+        "title": "Testing",
+        "description": "Vitest + React Testing Library for comprehensive unit and integration tests."
+      },
+      "codeQuality": {
+        "title": "Code Quality",
+        "description": "ESLint + Prettier for consistent code formatting and quality."
+      },
+      "errorHandling": {
+        "title": "Error Handling",
+        "description": "ErrorBoundary component with comprehensive logging and error reporting."
+      }
+    },
+    "gettingStarted": {
+      "title": "Getting Started",
+      "description": "This boilerplate is ready for development. Start building your application by:",
+      "steps": [
+        "Adding new components in the src/components folder",
+        "Creating new pages in the src/pages folder",
+        "Defining types in the src/types folder",
+        "Adding utilities in the src/utils folder",
+        "Setting up additional routes in the router configuration",
+        "Adding state management as needed"
+      ]
+    }
+  },
+  "features": {
+    "title": "Features",
+    "subtitle": "Discover the powerful features of our React TypeScript boilerplate",
+    "featureList": {
+      "react19": {
+        "title": "React 19",
+        "description": "Latest React features with concurrent rendering and improved performance"
+      },
+      "typescript": {
+        "title": "TypeScript 5.8",
+        "description": "Advanced type system with strict mode and comprehensive type checking"
+      },
+      "vite": {
+        "title": "Vite Build",
+        "description": "Lightning-fast build tool with instant hot module replacement"
+      },
+      "tailwind": {
+        "title": "Tailwind CSS",
+        "description": "Utility-first CSS framework for rapid UI development"
+      },
+      "testing": {
+        "title": "Comprehensive Testing",
+        "description": "Vitest for unit tests and Cypress for E2E testing"
+      },
+      "pwa": {
+        "title": "PWA Support",
+        "description": "Progressive Web App features with offline-first architecture"
+      },
+      "docker": {
+        "title": "Docker Ready",
+        "description": "Production-ready Docker configuration with Nginx"
+      },
+      "ci": {
+        "title": "CI/CD Pipeline",
+        "description": "GitHub Actions workflow for automated testing and deployment"
+      }
+    }
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Learn more about our React TypeScript boilerplate project",
+    "description": "This is a comprehensive React application template designed to provide developers with a solid foundation for building modern web applications. It includes all the essential tools and configurations needed for production development.",
+    "techStack": {
+      "title": "Technology Stack",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "testing": "Testing",
+      "build": "Build Tools",
+      "deployment": "Deployment"
+    },
+    "contributing": {
+      "title": "Contributing",
+      "description": "We welcome contributions from the community. Please read our contributing guidelines and submit pull requests.",
+      "steps": [
+        "Fork the repository",
+        "Create a feature branch",
+        "Make your changes",
+        "Add tests for new functionality",
+        "Ensure all tests pass",
+        "Submit a pull request"
+      ]
+    }
+  },
+  "offline": {
+    "title": "Offline-First & PWA Features",
+    "subtitle": "Experience the future of web applications with intelligent offline capabilities, progressive web app features, and seamless user experience regardless of network conditions.",
+    "features": {
+      "pwa": {
+        "title": "Progressive Web App",
+        "description": "Installable app with native-like experience, standalone mode, and automatic updates."
+      },
+      "offlineFirst": {
+        "title": "Offline-First",
+        "description": "Intelligent caching strategies with automatic fallbacks and seamless offline experience."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Optimized loading, smart caching, and instant navigation for better user experience."
+      }
+    },
+    "demo": {
+      "title": "Offline-First Demo",
+      "subtitle": "Experience the power of offline-first functionality with intelligent caching and fallbacks",
+      "networkStatus": {
+        "online": "🟢 Online - Full functionality available",
+        "offline": "🔴 Offline - Using cached data"
+      },
+      "autoFetch": {
+        "title": "🔄 Automatic Offline-First Data Fetching",
+        "fetchButton": "Fetch Fresh Data",
+        "fetching": "Fetching...",
+        "fromCache": "📱 From Cache",
+        "fromNetwork": "🌐 From Network",
+        "currentData": "Current Data:",
+        "noData": "No data yet",
+        "tip": "💡 This data automatically caches and falls back to cache when offline"
+      },
+      "manualCache": {
+        "title": "🗄️ Manual Cache Management",
+        "cacheKey": "Cache Key",
+        "cacheData": "Cache Data",
+        "ttl": "TTL (milliseconds)",
+        "cacheButton": "Cache Data",
+        "checkButton": "Check Cache",
+        "cacheStatus": "Cache Status",
+        "totalItems": "Total Items:",
+        "maxCapacity": "Max Capacity:",
+        "memoryUsage": "Memory Usage:",
+        "quickActions": "Quick Actions",
+        "preloadButton": "Preload Sample Data",
+        "checkStatusButton": "Check Key Status"
+      },
+      "offlineFeatures": {
+        "title": "📱 Offline Features",
+        "available": "✅ Available Offline",
+        "limited": "⚠️ Limited Offline",
+        "availableItems": [
+          "Cached data access",
+          "App navigation",
+          "UI interactions",
+          "Form inputs (saved locally)",
+          "Basic functionality"
+        ],
+        "limitedItems": [
+          "Real-time data updates",
+          "API calls",
+          "External resources",
+          "Live notifications"
+        ],
+        "syncMessage": "🔄 Sync When Online",
+        "syncDescription": "Any changes made offline will automatically sync when you're back online."
+      },
+      "technicalDetails": {
+        "title": "🔧 Technical Implementation",
+        "serviceWorker": "Service Worker: Handles caching strategies, offline fallbacks, and app updates",
+        "cacheApi": "Cache API: Stores data with TTL, automatic cleanup, and localStorage fallback",
+        "networkDetection": "Network Detection: Real-time monitoring of online/offline status",
+        "intelligentFallbacks": "Intelligent Fallbacks: Automatic fallback to cached data when offline",
+        "pwaFeatures": "PWA Features: Installable app, standalone mode, and offline-first architecture"
+      }
+    },
+    "howItWorks": {
+      "title": "💡 How It Works",
+      "steps": [
+        "Service worker caches app resources and API responses",
+        "When offline, app uses cached data automatically",
+        "Changes are queued and synced when back online",
+        "App updates automatically in the background"
+      ]
+    },
+    "browserSupport": {
+      "title": "🌐 Browser Support",
+      "chrome": "Chrome/Edge:",
+      "firefox": "Firefox:",
+      "safari": "Safari:",
+      "mobile": "Mobile:",
+      "fullSupport": "✓ Full Support",
+      "limited": "⚠️ Limited"
+    },
+    "development": {
+      "title": "🛠️ Development",
+      "tips": [
+        "Use Chrome DevTools Application tab to inspect service worker",
+        "Test offline mode in Network tab",
+        "Monitor cache storage and service worker lifecycle",
+        "Use Lighthouse for PWA audit"
+      ]
+    }
+  },
+  "language": {
+    "title": "Language Settings",
+    "subtitle": "Choose your preferred language for the application",
+    "currentLanguage": "Current Language",
+    "selectLanguage": "Select Language",
+    "languageChanged": "Language changed successfully",
+    "languageChangeError": "Error changing language",
+    "autoDetect": "Auto-detect",
+    "preferredLanguage": "Preferred Language",
+    "systemLanguage": "System Language",
+    "rtlSupport": "Right-to-Left Support",
+    "rtlDescription": "This language is displayed from right to left",
+    "ltrDescription": "This language is displayed from left to right"
+  },
+  "errors": {
+    "general": "Something went wrong",
+    "network": "Network error occurred",
+    "notFound": "Page not found",
+    "unauthorized": "Unauthorized access",
+    "forbidden": "Access forbidden",
+    "serverError": "Server error occurred",
+    "timeout": "Request timeout",
+    "offline": "You are currently offline",
+    "retry": "Please try again",
+    "contactSupport": "Please contact support if the problem persists"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "minLength": "Minimum length is {{min}} characters",
+    "maxLength": "Maximum length is {{max}} characters",
+    "password": "Password must be at least 8 characters long",
+    "passwordMatch": "Passwords must match",
+    "invalidFormat": "Invalid format",
+    "numberRange": "Value must be between {{min}} and {{max}}",
+    "url": "Please enter a valid URL"
+  },
+  "notifications": {
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Information",
+    "dismiss": "Dismiss",
+    "dismissAll": "Dismiss All",
+    "markAsRead": "Mark as Read",
+    "markAllAsRead": "Mark All as Read"
+  },
+  "time": {
+    "now": "Now",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow",
+    "thisWeek": "This Week",
+    "lastWeek": "Last Week",
+    "nextWeek": "Next Week",
+    "thisMonth": "This Month",
+    "lastMonth": "Last Month",
+    "nextMonth": "Next Month",
+    "thisYear": "This Year",
+    "lastYear": "Last Year",
+    "nextYear": "Next Year",
+    "ago": "{{time}} ago",
+    "in": "In {{time}}",
+    "seconds": "{{count}} second",
+    "seconds_plural": "{{count}} seconds",
+    "minutes": "{{count}} minute",
+    "minutes_plural": "{{count}} minutes",
+    "hours": "{{count}} hour",
+    "hours_plural": "{{count}} hours",
+    "days": "{{count}} day",
+    "days_plural": "{{count}} days",
+    "weeks": "{{count}} week",
+    "weeks_plural": "{{count}} weeks",
+    "months": "{{count}} month",
+    "months_plural": "{{count}} months",
+    "years": "{{count}} year",
+    "years_plural": "{{count}} years"
+  },
+  "date": {
+    "format": "MM/DD/YYYY",
+    "shortFormat": "MM/DD/YY",
+    "longFormat": "MMMM DD, YYYY",
+    "timeFormat": "HH:mm",
+    "dateTimeFormat": "MM/DD/YYYY HH:mm",
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "shortMonths": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dec"
+    },
+    "weekdays": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    },
+    "shortWeekdays": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    }
+  },
+  "numbers": {
+    "decimal": ".",
+    "thousands": ",",
+    "currency": {
+      "symbol": "$",
+      "position": "before",
+      "decimals": 2
+    },
+    "percentage": {
+      "symbol": "%",
+      "decimals": 2
+    }
+  }
+} 

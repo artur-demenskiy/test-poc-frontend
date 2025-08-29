@@ -1,0 +1,424 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "submit": "إرسال",
+    "reset": "إعادة تعيين",
+    "confirm": "تأكيد",
+    "yes": "نعم",
+    "no": "لا",
+    "ok": "موافق",
+    "retry": "إعادة المحاولة",
+    "refresh": "تحديث",
+    "download": "تحميل",
+    "upload": "رفع",
+    "copy": "نسخ",
+    "paste": "لصق",
+    "cut": "قص",
+    "select": "اختيار",
+    "deselect": "إلغاء الاختيار",
+    "selectAll": "اختيار الكل",
+    "clear": "مسح",
+    "apply": "تطبيق",
+    "done": "تم",
+    "settings": "الإعدادات",
+    "preferences": "التفضيلات",
+    "help": "مساعدة",
+    "about": "حول",
+    "contact": "اتصال",
+    "support": "الدعم",
+    "feedback": "تعليق",
+    "report": "تقرير",
+    "share": "مشاركة",
+    "print": "طباعة",
+    "export": "تصدير",
+    "import": "استيراد",
+    "sync": "مزامنة",
+    "offline": "غير متصل",
+    "online": "متصل"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "features": "الميزات",
+    "about": "حول",
+    "offline": "غير متصل و PWA",
+    "language": "اللغة",
+    "profile": "الملف الشخصي",
+    "dashboard": "لوحة التحكم",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "register": "تسجيل",
+    "menu": "القائمة",
+    "sidebar": "الشريط الجانبي",
+    "breadcrumb": "مسار التنقل"
+  },
+  "home": {
+    "title": "قالب React TypeScript",
+    "subtitle": "قالب تطبيق React جاهز للإنتاج مع أدوات حديثة واختبار شامل وتكوين بناء محسن.",
+    "features": {
+      "fastDevelopment": {
+        "title": "تطوير سريع",
+        "description": "Vite + React SWC لبناء سريع كالبرق واستبدال الوحدات الساخن."
+      },
+      "typeSafety": {
+        "title": "أمان النوع",
+        "description": "وضع TypeScript الصارم مع فحص شامل للنوع والتحقق."
+      },
+      "modernStyling": {
+        "title": "تصميم حديث",
+        "description": "Tailwind CSS مع نهج المنفعة أولاً والتصميم المتجاوب."
+      },
+      "testing": {
+        "title": "اختبار",
+        "description": "Vitest + React Testing Library لاختبار شامل للوحدات والتكامل."
+      },
+      "codeQuality": {
+        "title": "جودة الكود",
+        "description": "ESLint + Prettier لتنسيق الكود المتسق والجودة."
+      },
+      "errorHandling": {
+        "title": "معالجة الأخطاء",
+        "description": "مكون ErrorBoundary مع تسجيل شامل وتقارير الأخطاء."
+      }
+    },
+    "gettingStarted": {
+      "title": "البدء",
+      "description": "هذا القالب جاهز للتطوير. ابدأ في بناء تطبيقك:",
+      "steps": [
+        "إضافة مكونات جديدة في مجلد src/components",
+        "إنشاء صفحات جديدة في مجلد src/pages",
+        "تحديد أنواع في مجلد src/types",
+        "إضافة أدوات مساعدة في مجلد src/utils",
+        "إعداد مسارات إضافية في تكوين الموجه",
+        "إضافة إدارة الحالة حسب الحاجة"
+      ]
+    }
+  },
+  "features": {
+    "title": "الميزات",
+    "subtitle": "اكتشف الميزات القوية لقالب React TypeScript الخاص بنا",
+    "featureList": {
+      "react19": {
+        "title": "React 19",
+        "description": "أحدث ميزات React مع العرض المتزامن وأداء محسن"
+      },
+      "typescript": {
+        "title": "TypeScript 5.8",
+        "description": "نظام أنواع متقدم مع الوضع الصارم وفحص شامل للنوع"
+      },
+      "vite": {
+        "title": "بناء Vite",
+        "description": "أداة بناء سريعة كالبرق مع استبدال فوري للوحدات الساخنة"
+      },
+      "tailwind": {
+        "title": "Tailwind CSS",
+        "description": "إطار عمل CSS للمنفعة أولاً للتطوير السريع للواجهة"
+      },
+      "testing": {
+        "title": "اختبار شامل",
+        "description": "Vitest لاختبار الوحدات وCypress لاختبار E2E"
+      },
+      "pwa": {
+        "title": "دعم PWA",
+        "description": "ميزات Progressive Web App مع بنية غير متصل أولاً"
+      },
+      "docker": {
+        "title": "جاهز لـ Docker",
+        "description": "تكوين Docker جاهز للإنتاج مع Nginx"
+      },
+      "ci": {
+        "title": "خط أنابيب CI/CD",
+        "description": "سير عمل GitHub Actions للاختبار والنشر الآلي"
+      }
+    }
+  },
+  "about": {
+    "title": "حول",
+    "subtitle": "تعرف على المزيد حول مشروع قالب React TypeScript الخاص بنا",
+    "description": "هذا قالب تطبيق React شامل مصمم لتزويد المطورين بأساس متين لبناء تطبيقات الويب الحديثة. يتضمن جميع الأدوات والتكوينات الأساسية اللازمة للتطوير الإنتاجي.",
+    "techStack": {
+      "title": "المكدس التقني",
+      "frontend": "الواجهة الأمامية",
+      "backend": "الخلفية",
+      "testing": "الاختبار",
+      "build": "أدوات البناء",
+      "deployment": "النشر"
+    },
+    "contributing": {
+      "title": "المساهمة",
+      "description": "نرحب بالمساهمات من المجتمع. يرجى قراءة إرشادات المساهمة الخاصة بنا وإرسال طلبات السحب.",
+      "steps": [
+        "تفرع المستودع",
+        "إنشاء فرع ميزة",
+        "إجراء التغييرات",
+        "إضافة اختبارات للميزة الجديدة",
+        "التأكد من اجتياز جميع الاختبارات",
+        "إرسال طلب سحب"
+      ]
+    }
+  },
+  "offline": {
+    "title": "ميزات غير متصل أولاً و PWA",
+    "subtitle": "اختبر مستقبل تطبيقات الويب مع قدرات ذكية غير متصل وميزات تطبيق ويب تدريجي وتجربة مستخدم سلسة بغض النظر عن ظروف الشبكة.",
+    "features": {
+      "pwa": {
+        "title": "تطبيق ويب تدريجي",
+        "description": "تطبيق قابل للتثبيت مع تجربة شبيهة بالأصلية ووضع مستقل وتحديثات تلقائية."
+      },
+      "offlineFirst": {
+        "title": "غير متصل أولاً",
+        "description": "استراتيجيات ذكية للتخزين المؤقت مع استراتيجيات احتياطية تلقائية وتجربة سلسة غير متصل."
+      },
+      "performance": {
+        "title": "الأداء",
+        "description": "تحميل محسن وتخزين مؤقت ذكي وملاحة فورية لتجربة مستخدم أفضل."
+      }
+    },
+    "demo": {
+      "title": "عرض توضيحي غير متصل أولاً",
+      "subtitle": "اختبر قوة الوظائف غير المتصلة أولاً مع التخزين المؤقت الذكي والاستراتيجيات الاحتياطية",
+      "networkStatus": {
+        "online": "🟢 متصل - الوظائف الكاملة متاحة",
+        "offline": "🔴 غير متصل - استخدام البيانات المخزنة مؤقتاً"
+      },
+      "autoFetch": {
+        "title": "🔄 جلب بيانات تلقائي غير متصل أولاً",
+        "fetchButton": "جلب بيانات جديدة",
+        "fetching": "جاري الجلب...",
+        "fromCache": "📱 من التخزين المؤقت",
+        "fromNetwork": "🌐 من الشبكة",
+        "currentData": "البيانات الحالية:",
+        "noData": "لا توجد بيانات بعد",
+        "tip": "💡 هذه البيانات يتم تخزينها مؤقتاً تلقائياً وتستخدم التخزين المؤقت عند عدم الاتصال"
+      },
+      "manualCache": {
+        "title": "🗄️ إدارة التخزين المؤقت اليدوية",
+        "cacheKey": "مفتاح التخزين المؤقت",
+        "cacheData": "بيانات التخزين المؤقت",
+        "ttl": "TTL (مللي ثانية)",
+        "cacheButton": "تخزين البيانات مؤقتاً",
+        "checkButton": "فحص التخزين المؤقت",
+        "cacheStatus": "حالة التخزين المؤقت",
+        "totalItems": "إجمالي العناصر:",
+        "maxCapacity": "السعة القصوى:",
+        "memoryUsage": "استخدام الذاكرة:",
+        "quickActions": "إجراءات سريعة",
+        "preloadButton": "تحميل بيانات عينة مسبقاً",
+        "checkStatusButton": "فحص حالة المفتاح"
+      },
+      "offlineFeatures": {
+        "title": "📱 ميزات غير متصل",
+        "available": "✅ متاح غير متصل",
+        "limited": "⚠️ محدود غير متصل",
+        "availableItems": [
+          "الوصول إلى البيانات المخزنة مؤقتاً",
+          "تنقل التطبيق",
+          "تفاعلات الواجهة",
+          "إدخال النماذج (محفوظ محلياً)",
+          "الوظائف الأساسية"
+        ],
+        "limitedItems": [
+          "تحديثات البيانات في الوقت الفعلي",
+          "استدعاءات API",
+          "الموارد الخارجية",
+          "الإشعارات المباشرة"
+        ],
+        "syncMessage": "🔄 مزامنة عند الاتصال",
+        "syncDescription": "أي تغييرات تمت عند عدم الاتصال ستتم مزامنتها تلقائياً عند العودة للاتصال."
+      },
+      "technicalDetails": {
+        "title": "🔧 التنفيذ التقني",
+        "serviceWorker": "Service Worker: يدير استراتيجيات التخزين المؤقت والاستراتيجيات الاحتياطية غير المتصلة وتحديثات التطبيق",
+        "cacheApi": "Cache API: يخزن البيانات مع TTL وتنظيف تلقائي واستراتيجية احتياطية localStorage",
+        "networkDetection": "كشف الشبكة: مراقبة في الوقت الفعلي لحالة الاتصال/عدم الاتصال",
+        "intelligentFallbacks": "استراتيجيات احتياطية ذكية: انتقال تلقائي إلى البيانات المخزنة مؤقتاً عند عدم الاتصال",
+        "pwaFeatures": "ميزات PWA: تطبيق قابل للتثبيت ووضع مستقل وبنية غير متصل أولاً"
+      }
+    },
+    "howItWorks": {
+      "title": "💡 كيف يعمل",
+      "steps": [
+        "Service Worker يخزن مؤقتاً موارد التطبيق واستجابات API",
+        "عند عدم الاتصال، يستخدم التطبيق البيانات المخزنة مؤقتاً تلقائياً",
+        "يتم وضع التغييرات في قائمة انتظار ومزامنتها عند إعادة الاتصال",
+        "يتم تحديث التطبيق تلقائياً في الخلفية"
+      ]
+    },
+    "browserSupport": {
+      "title": "🌐 دعم المتصفح",
+      "chrome": "Chrome/Edge:",
+      "firefox": "Firefox:",
+      "safari": "Safari:",
+      "mobile": "الجوال:",
+      "fullSupport": "✓ دعم كامل",
+      "limited": "⚠️ محدود"
+    },
+    "development": {
+      "title": "🛠️ التطوير",
+      "tips": [
+        "استخدم علامة التبويب Application في Chrome DevTools لفحص service worker",
+        "اختبر الوضع غير المتصل في علامة التبويب Network",
+        "راقب تخزين التخزين المؤقت ودورة حياة service worker",
+        "استخدم Lighthouse لتدقيق PWA"
+      ]
+    }
+  },
+  "language": {
+    "title": "إعدادات اللغة",
+    "subtitle": "اختر لغتك المفضلة للتطبيق",
+    "currentLanguage": "اللغة الحالية",
+    "selectLanguage": "اختر اللغة",
+    "languageChanged": "تم تغيير اللغة بنجاح",
+    "languageChangeError": "خطأ في تغيير اللغة",
+    "autoDetect": "اكتشاف تلقائي",
+    "preferredLanguage": "اللغة المفضلة",
+    "systemLanguage": "لغة النظام",
+    "rtlSupport": "دعم من اليمين إلى اليسار",
+    "rtlDescription": "هذه اللغة تعرض من اليمين إلى اليسار",
+    "ltrDescription": "هذه اللغة تعرض من اليسار إلى اليمين"
+  },
+  "errors": {
+    "general": "حدث خطأ ما",
+    "network": "حدث خطأ في الشبكة",
+    "notFound": "الصفحة غير موجودة",
+    "unauthorized": "وصول غير مصرح",
+    "forbidden": "الوصول محظور",
+    "serverError": "حدث خطأ في الخادم",
+    "timeout": "انتهت مهلة الطلب",
+    "offline": "أنت غير متصل حالياً",
+    "retry": "يرجى المحاولة مرة أخرى",
+    "contactSupport": "يرجى الاتصال بالدعم إذا استمرت المشكلة"
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "email": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+    "minLength": "الحد الأدنى للطول هو {{min}} أحرف",
+    "maxLength": "الحد الأقصى للطول هو {{max}} أحرف",
+    "password": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل",
+    "passwordMatch": "يجب أن تتطابق كلمات المرور",
+    "invalidFormat": "تنسيق غير صحيح",
+    "numberRange": "يجب أن تكون القيمة بين {{min}} و {{max}}",
+    "url": "يرجى إدخال رابط صحيح"
+  },
+  "notifications": {
+    "success": "نجح",
+    "error": "خطأ",
+    "warning": "تحذير",
+    "info": "معلومات",
+    "dismiss": "إغلاق",
+    "dismissAll": "إغلاق الكل",
+    "markAsRead": "تحديد كمقروء",
+    "markAllAsRead": "تحديد الكل كمقروء"
+  },
+  "time": {
+    "now": "الآن",
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "tomorrow": "غداً",
+    "thisWeek": "هذا الأسبوع",
+    "lastWeek": "الأسبوع الماضي",
+    "nextWeek": "الأسبوع القادم",
+    "thisMonth": "هذا الشهر",
+    "lastMonth": "الشهر الماضي",
+    "nextMonth": "الشهر القادم",
+    "thisYear": "هذا العام",
+    "lastYear": "العام الماضي",
+    "nextYear": "العام القادم",
+    "ago": "منذ {{time}}",
+    "in": "في {{time}}",
+    "seconds": "{{count}} ثانية",
+    "seconds_plural": "{{count}} ثانية",
+    "minutes": "{{count}} دقيقة",
+    "minutes_plural": "{{count}} دقيقة",
+    "hours": "{{count}} ساعة",
+    "hours_plural": "{{count}} ساعة",
+    "days": "{{count}} يوم",
+    "days_plural": "{{count}} يوم",
+    "weeks": "{{count}} أسبوع",
+    "weeks_plural": "{{count}} أسبوع",
+    "months": "{{count}} شهر",
+    "months_plural": "{{count}} شهر",
+    "years": "{{count}} عام",
+    "years_plural": "{{count}} عام"
+  },
+  "date": {
+    "format": "DD/MM/YYYY",
+    "shortFormat": "DD/MM/YY",
+    "longFormat": "DD MMMM YYYY",
+    "timeFormat": "HH:mm",
+    "dateTimeFormat": "DD/MM/YYYY HH:mm",
+    "months": {
+      "january": "يناير",
+      "february": "فبراير",
+      "march": "مارس",
+      "april": "أبريل",
+      "may": "مايو",
+      "june": "يونيو",
+      "july": "يوليو",
+      "august": "أغسطس",
+      "september": "سبتمبر",
+      "october": "أكتوبر",
+      "november": "نوفمبر",
+      "december": "ديسمبر"
+    },
+    "shortMonths": {
+      "jan": "ينا",
+      "feb": "فبر",
+      "mar": "مار",
+      "apr": "أبر",
+      "may": "ماي",
+      "jun": "يون",
+      "jul": "يول",
+      "aug": "أغس",
+      "sep": "سبت",
+      "oct": "أكت",
+      "nov": "نوف",
+      "dec": "ديس"
+    },
+    "weekdays": {
+      "monday": "الاثنين",
+      "tuesday": "الثلاثاء",
+      "wednesday": "الأربعاء",
+      "thursday": "الخميس",
+      "friday": "الجمعة",
+      "saturday": "السبت",
+      "sunday": "الأحد"
+    },
+    "shortWeekdays": {
+      "mon": "اثن",
+      "tue": "ثلا",
+      "wed": "أرب",
+      "thu": "خمي",
+      "fri": "جمع",
+      "sat": "سبت",
+      "sun": "أحد"
+    }
+  },
+  "numbers": {
+    "decimal": ".",
+    "thousands": ",",
+    "currency": {
+      "symbol": "ر.س",
+      "position": "after",
+      "decimals": 2
+    },
+    "percentage": {
+      "symbol": "%",
+      "decimals": 2
+    }
+  }
+} 
